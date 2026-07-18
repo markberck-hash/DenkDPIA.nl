@@ -1,1 +1,148 @@
-<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DenkDPIA.nl - Eerst de redenering. Daarna pas het template.</title><link rel="icon" href="favicon.ico"><link rel="stylesheet" href="styles.css"><script defer src="data.js"></script><script defer src="app.js"></script><meta name="description" content="DenkDPIA helpt je zwakke plekken in je DPIA-redenering zichtbaar maken voordat je begint met schrijven."><meta name="robots" content="index,follow"></head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a><header class="site-header"><a class="brand" href="#start" data-route="start"><img class="brand-logo" src="logo-denkdpia-small.png" alt=""><span>DenkDPIA.nl</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav class="topnav" id="primary-nav" aria-label="Hoofdnavigatie"><a href="#start" data-route="start">Start</a><a href="#denkkader" data-route="denkkader">Denkkader</a><a href="#denkcheck" data-route="denkcheck">Denkcheck</a><a href="#over" data-route="over">Over</a><a href="#help" data-route="help">Help</a></nav></header><main id="inhoud" tabindex="-1"><section id="start" class="page active" aria-labelledby="start-title"><div class="hero"><div class="hero-copy"><p class="kicker" id="start-kicker"></p><h1 id="start-title"></h1><p class="lead" id="start-lead"></p><p class="microcopy">12 denkstappen • volledig in je browser • geen serveropslag</p><div class="actions"><button class="button primary" type="button" data-start-check>Start de denkcheck</button><a class="button secondary" href="#help" data-route="help">Hoe werkt dit?</a></div></div></div><div class="start-grid"><section class="result-panel"><h2 id="side-title"></h2><p id="side-text"></p><p class="rule" id="side-rule"></p></section><section class="result-panel"><h2>Waarom deze tool bestaat</h2><div id="start-intro"></div></section></div><section class="onboarding-block"><h2>Wanneer gebruik je DenkDPIA?</h2><div class="onboarding-grid"><article><h3>Ik moet een DPIA voorbereiden</h3><p>Gebruik DenkDPIA voordat je begint met invullen.</p></article><article><h3>Ik heb al een concept</h3><p>Gebruik DenkDPIA om te toetsen welke redeneringen nog kwetsbaar zijn.</p></article><article><h3>Ik onderzoek een nieuwe verwerking</h3><p>Gebruik DenkDPIA om verwerking, doel, noodzaak, risico en maatregelen scherp te krijgen.</p></article></div></section><section class="onboarding-block"><h2>Wat deze tool wel en niet doet</h2><div class="onboarding-grid two"><article><h3>Wel</h3><ul><li>stelt kritische vragen;</li><li>maakt aannames zichtbaar;</li><li>helpt risico’s formuleren;</li><li>ondersteunt DPIA-voorbereiding.</li></ul></article><article><h3>Niet</h3><ul><li>schrijft geen DPIA;</li><li>controleert geen document;</li><li>kiest geen grondslag;</li><li>geeft geen juridisch advies.</li></ul></article></div></section><section class="onboarding-block"><h2>Waarom deze route?</h2><div class="result-panel"><p>De korte uitleg op deze pagina helpt je op gang. Het <a href="#denkkader" data-route="denkkader">Denkkader</a> legt uit waarom de denkcheck in deze volgorde is opgebouwd.</p></div></section></section><section id="precheck" class="page"><p class="kicker">Voordat je begint</p><h1>Gebruik de denkcheck als werkruimte.</h1><p class="lead narrow">Deze tool beoordeelt geen DPIA-document en schrijft geen DPIA. De denkcheck helpt je de redenering achter een DPIA scherp te krijgen.</p><div class="topic-list"><article class="topic-card"><h2>Wat ga je doen?</h2><p>Je doorloopt vragen over verwerking, doel, noodzaak, gegevens, keten, rechtmatigheid, risico’s, maatregelen en besluitvorming.</p></article><article class="topic-card"><h2>Gebruik geen gevoelige informatie</h2><p>De tool slaat je invoer niet op en verstuurt niets naar een server. Vul geen vertrouwelijke of herleidbare bedrijfsinformatie in.</p></article><article class="topic-card"><h2>Lineaire route, niet-lineair denken</h2><p>De stappen staan in een volgorde, maar je mag terug en later weer verder.</p></article></div><div class="actions"><button class="button primary" type="button" data-start-check-real>Start de denkcheck</button><a class="button secondary" href="#denkkader" data-route="denkkader">Bekijk eerst het denkkader</a></div></section><section id="denkcheck" class="page"><p class="kicker">Denkcheck</p><h1>Doorloop de route.</h1><p class="lead narrow">Kies wat het best past. De tekst onder een keuze is geen oordeel, maar tegenvraag op je redenering.</p><div class="wizard-layout"><aside class="progress-card"><div id="subject-context" class="subject-context" hidden></div><div class="progress-meta"><span id="step-count"></span><span id="progress-percent"></span></div><div class="progress-bar"><span id="progress-fill"></span></div><ol id="step-list" class="step-list"></ol><button class="button reset" type="button" id="reset-btn">Opnieuw beginnen</button></aside><section class="wizard-card"><form id="wizard-form"><div id="step-container"></div><div class="note-box"><label for="note-field">Werknotitie</label><textarea id="note-field" rows="4"></textarea></div><div class="wizard-actions"><button class="button ghost" type="button" id="back-btn">Vorige</button><button class="button primary" type="submit" id="next-btn">Volgende</button></div></form></section></div></section><section id="resultaat" class="page"><div id="result-output"></div></section><section id="denkkader" class="page"><p class="kicker">Denkkader</p><h1>Een DPIA is een redenering.</h1><p class="lead narrow">Een DPIA wordt niet sterk door een compleet ingevuld document, maar door een expliciete en toetsbare redenering. Deze pagina legt uit waarom de denkcheck in deze volgorde is opgebouwd.</p><div class="topic-list" id="denkkader-main"></div></section><section id="over" class="page"><p class="kicker">Over</p><h1 id="over-title">Over DenkDPIA</h1><p class="lead narrow" id="over-lead"></p><div id="over-main" class="topic-list"></div></section><section id="help" class="page"><p class="kicker">Help</p><h1 id="help-title">Help</h1><p class="lead narrow" id="help-lead"></p><div id="help-main" class="help-grid"></div></section><section id="uitleg" class="page"><p class="kicker">Uitleg bij tegenspraak</p><h1 id="uitleg-title">Uitleg bij tegenspraak</h1><p class="lead narrow" id="uitleg-lead"></p><div id="uitleg-detail"></div></section></main><footer class="site-footer"><div class="footer-content"><span>DenkDPIA.nl v0.9.8.6</span><span>•</span><a href="https://www.linkedin.com/in/markberck/">Mark Berck op LinkedIn</a><span>•</span><a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></div></footer></body></html>
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DenkDPIA.nl - Eerst de redenering. Daarna pas het template.</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+  <meta name="description" content="DenkDPIA helpt je zwakke plekken in je DPIA-redenering zichtbaar maken voordat je begint met schrijven.">
+  <meta name="robots" content="index,follow">
+</head>
+<body>
+  <a class="skip-link" href="#inhoud">Direct naar inhoud</a>
+  <header class="site-header">
+    <a class="brand" href="#start" data-route="start"><img class="brand-logo" src="logo-denkdpia-small.png" alt=""><span>DenkDPIA.nl</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav class="topnav" id="primary-nav" aria-label="Hoofdnavigatie">
+      <a href="#start" data-route="start">Start</a>
+      <a href="#denkkader" data-route="denkkader">Denkkader</a>
+      <a href="#denkcheck" data-route="denkcheck">Denkcheck</a>
+      <a href="#over" data-route="over">Over</a>
+      <a href="#help" data-route="help">Help</a>
+    </nav>
+  </header>
+  <main id="inhoud" tabindex="-1">
+    <section id="start" class="page active" aria-labelledby="start-title">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="kicker" id="start-kicker"></p>
+          <h1 id="start-title"></h1>
+          <p class="lead" id="start-lead"></p>
+          <p class="microcopy">12 denkstappen • volledig in je browser • geen serveropslag</p>
+          <div class="actions">
+            <button class="button primary" type="button" data-start-check>Start de denkcheck</button>
+            <a class="button secondary" href="#help" data-route="help">Hoe werkt dit?</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="start-grid">
+        <section class="result-panel">
+          <h2 id="side-title"></h2>
+          <p id="side-text"></p>
+          <p class="rule" id="side-rule"></p>
+        </section>
+        <section class="result-panel">
+          <h2>Waarom DenkDPIA?</h2>
+          <div id="start-intro"></div>
+        </section>
+      </div>
+
+      <section class="onboarding-block">
+        <h2>Waar helpt DenkDPIA bij?</h2>
+        <div class="onboarding-grid">
+          <article>
+            <h3>Toegang tot output</h3>
+            <p>Wie krijgt toegang tot de output, en klopt dat nog met de toegang tot de brongegevens?</p>
+          </article>
+          <article>
+            <h3>Doel of voordeel</h3>
+            <p>Is het doel echt een doel, of blijkt het vooral een voordeel zoals gemak, snelheid of vindbaarheid?</p>
+          </article>
+          <article>
+            <h3>Risico voor betrokkenen</h3>
+            <p>Is het risico geformuleerd als mogelijk gevolg voor betrokkenen, of blijft het hangen in techniek of organisatie?</p>
+          </article>
+          <article>
+            <h3>Maatregel bij risico</h3>
+            <p>Past de maatregel bij het risico, of staat er vooral een bekende beheersmaatregel zonder duidelijke werking?</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="onboarding-block">
+        <h2>Wat levert het op?</h2>
+        <div class="result-panel">
+          <p>Na de denkcheck heb je geen juridisch oordeel en geen ingevulde DPIA. Je hebt wel een scherpere werkvoorraad voor verdere uitwerking: aannames die bewijs vragen, risico’s die concreter moeten, maatregelen die beter gekoppeld moeten worden aan risico’s en keuzes die expliciet besloten moeten worden.</p>
+        </div>
+      </section>
+
+      <section class="onboarding-block">
+        <h2>Afbakening</h2>
+        <div class="result-panel">
+          <p>De tool helpt je niet een antwoord te kiezen, maar helpt wel de redenering achter dat antwoord scherper te maken. DenkDPIA schrijft geen DPIA, controleert geen document, kiest geen grondslag en geeft geen juridisch advies.</p>
+        </div>
+      </section>
+
+      <section class="onboarding-block">
+        <h2>Waarom deze route?</h2>
+        <div class="result-panel">
+          <p>De korte uitleg op deze pagina helpt je op gang. Het <a href="#denkkader" data-route="denkkader">Denkkader</a> legt uit waarom de denkcheck in deze volgorde is opgebouwd.</p>
+        </div>
+      </section>
+    </section>
+
+    <section id="precheck" class="page">
+      <p class="kicker">Voordat je begint</p>
+      <h1>Gebruik de denkcheck als werkruimte.</h1>
+      <p class="lead narrow">Deze tool beoordeelt geen DPIA-document en schrijft geen DPIA. De denkcheck helpt je de redenering achter een DPIA scherp te krijgen.</p>
+      <div class="topic-list">
+        <article class="topic-card"><h2>Wat ga je doen?</h2><p>Je doorloopt vragen over verwerking, doel, noodzaak, gegevens, keten, rechtmatigheid, risico’s, maatregelen en besluitvorming.</p></article>
+        <article class="topic-card"><h2>Gebruik geen gevoelige informatie</h2><p>De tool slaat je invoer niet op en verstuurt niets naar een server. Vul geen vertrouwelijke of herleidbare bedrijfsinformatie in.</p></article>
+        <article class="topic-card"><h2>Lineaire route, niet-lineair denken</h2><p>De stappen staan in een volgorde, maar je mag terug en later weer verder.</p></article>
+      </div>
+      <div class="actions">
+        <button class="button primary" type="button" data-start-check-real>Start de denkcheck</button>
+        <a class="button secondary" href="#denkkader" data-route="denkkader">Bekijk eerst het denkkader</a>
+      </div>
+    </section>
+
+    <section id="denkcheck" class="page">
+      <p class="kicker">Denkcheck</p><h1>Doorloop de route.</h1>
+      <p class="lead narrow">Kies wat het best past. De tekst onder een keuze is geen oordeel, maar tegenvraag op je redenering.</p>
+      <div class="wizard-layout">
+        <aside class="progress-card">
+          <div id="subject-context" class="subject-context" hidden></div>
+          <div class="progress-meta"><span id="step-count"></span><span id="progress-percent"></span></div>
+          <div class="progress-bar"><span id="progress-fill"></span></div>
+          <ol id="step-list" class="step-list"></ol>
+          <button class="button reset" type="button" id="reset-btn">Opnieuw beginnen</button>
+        </aside>
+        <section class="wizard-card">
+          <form id="wizard-form">
+            <div id="step-container"></div>
+            <div class="note-box"><label for="note-field">Werknotitie</label><textarea id="note-field" rows="4"></textarea></div>
+            <div class="wizard-actions"><button class="button ghost" type="button" id="back-btn">Vorige</button><button class="button primary" type="submit" id="next-btn">Volgende</button></div>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <section id="resultaat" class="page"><div id="result-output"></div></section>
+    <section id="denkkader" class="page"><p class="kicker">Denkkader</p><h1>Een DPIA is een redenering.</h1><p class="lead narrow">Een DPIA wordt niet sterk door een compleet ingevuld document, maar door een expliciete en toetsbare redenering. Deze pagina legt uit waarom de denkcheck in deze volgorde is opgebouwd.</p><div class="topic-list" id="denkkader-main"></div></section>
+    <section id="over" class="page"><p class="kicker">Over</p><h1 id="over-title">Over DenkDPIA</h1><p class="lead narrow" id="over-lead"></p><div id="over-main" class="topic-list"></div></section>
+    <section id="help" class="page"><p class="kicker">Help</p><h1 id="help-title">Help</h1><p class="lead narrow" id="help-lead"></p><div id="help-main" class="help-grid"></div></section>
+    <section id="uitleg" class="page"><p class="kicker">Uitleg bij tegenspraak</p><h1 id="uitleg-title">Uitleg bij tegenspraak</h1><p class="lead narrow" id="uitleg-lead"></p><div id="uitleg-detail"></div></section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <span>DenkDPIA.nl v0.9.8.7</span><span>•</span>
+      <a href="https://www.linkedin.com/in/markberck/" aria-label="Mark Berck op LinkedIn opent in een nieuw venster">Mark Berck op LinkedIn ↗</a><span>•</span>
+      <a href="https://creativecommons.org/licenses/by-nc/4.0/" aria-label="CC BY-NC 4.0 opent in een nieuw venster">CC BY-NC 4.0 ↗</a>
+    </div>
+  </footer>
+</body>
+</html>

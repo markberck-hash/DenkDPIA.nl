@@ -1,5 +1,5 @@
 window.DPIA_MODEL = {
-  "version": "0.9.8.6",
+  "version": "0.9.8.7",
   "content": {
     "start": {
       "kicker": "DenkDPIA.nl",
@@ -50,7 +50,7 @@ window.DPIA_MODEL = {
         {
           "title": "Waarom ik deze tool heb gemaakt",
           "body": "Mijn naam is Mark Berck. Als senior functioneel beheerder heb ik de afgelopen jaren verschillende DPIA’s begeleid en geschreven. Uit die ervaring is deze tool ontstaan.",
-          "linkText": "Mark Berck op LinkedIn",
+          "linkText": "Mark Berck op LinkedIn ↗",
           "linkUrl": "https://www.linkedin.com/in/markberck/"
         },
         {
