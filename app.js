@@ -47,7 +47,7 @@ function escapeHtml(str) {
         '"': '&quot;'
     } [c]))
 }
-
+let firstRouteLoad = true;
 function setRoute(route) {
     const targetRoute = document.getElementById(route) ? route : 'start';
     qsa('.page').forEach(p => p.classList.toggle('active', p.id === targetRoute));
@@ -56,6 +56,14 @@ function setRoute(route) {
     if (!page) return;
     const focusTarget = page.querySelector('h1') || page;
     if (!focusTarget.hasAttribute('tabindex')) focusTarget.setAttribute('tabindex', '-1');
+
+    // Eerste paginalading: geen focus verplaatsen
+if (firstRouteLoad) {
+firstRouteLoad = false;
+return;
+}
+
+// Alleen bij interne navigatie
     focusTarget.focus({
         preventScroll: true
     })
@@ -249,7 +257,7 @@ function status(c) {
 function statusText(st) {
     if (st === 'red') return ['Er zitten nog dragende schakels los.', 'Niet gaan schrijven alsof de DPIA al staat.', 'Maak eerst de blokkades concreet: verwerking, gegevens, risico of besluitroute. Anders wordt een nette tekst vooral een verpakking voor onzekerheid.'];
     if (st === 'orange') return ['De redenering is bruikbaar, maar nog niet stevig genoeg.', 'Eerst aanscherpen, dan pas formuleren.', 'Er zijn meerdere punten waarop een kritische lezer terecht kan doorvragen. Gebruik de vragen hieronder als werkvoorraad.'];
-    return ['Er is geen grote tegenspraak geactiveerd.', 'Blijf kritisch op bewijs.', 'Dit betekent niet dat de DPIA goedgekeurd is. Het betekent alleen dat je antwoorden in deze check weinig duidelijke redeneringsspanning oproepen.']
+    return ['Weinig zichtbare tegenspraak gevonden.', 'Dat betekent niet dat de redenering klopt.', 'Deze denkcheck heeft weinig interne spanning gevonden in je antwoorden. Dat betekent niet dat een privacy officer of Functionaris Gegevensbescherming dezelfde conclusie zal trekken.']
 }
 
 function groupedFeedback(items) {
@@ -269,8 +277,11 @@ function renderResult() {
         questions = c.signals.slice(0, 5),
         subject = analysisSubject() || 'Niet ingevuld';
     const statusHeadline = st === 'red' ? 'Status: dragende schakels los' : (st === 'orange' ? 'Status: nog niet stevig genoeg' : 'Status: bruikbaar');
-    const prioritySummary = questions.length ? `${questions.length} ${questions.length === 1 ? 'vraag vraagt' : 'vragen vragen'} eerst aandacht.` : 'De vragen hieronder vormen de eerste werkvoorraad.';
-    const priorityQuestions = (questions.length ? questions : ['Welke aanname kan een kritische lezer betwisten?', 'Welke eerdere stap moet eerst kloppen?', 'Wat moet waar zijn voordat deze keuze draagt?']).map((q, i) => `<li class="priority-question"><span class="priority-number">${i + 1}</span><span class="priority-text">${escapeHtml(q)}</span></li>`).join('');
+    const prioritySummary = st === 'green' ? 'Welke vragen verwacht je dat een kritische FG alsnog gaat stellen?' : (questions.length ? `${questions.length} ${questions.length === 1 ? 'vraag vraagt' : 'vragen vragen'} eerst aandacht.` : 'De vragen hieronder vormen de eerste werkvoorraad.');
+    const defaultQuestions = ['Welke aanname kan een kritische lezer betwisten?', 'Welke eerdere stap moet eerst kloppen?', 'Wat moet waar zijn voordat deze keuze draagt?'];
+    const baseQuestions = questions.length ? questions : defaultQuestions;
+    const worklistQuestions = (st === 'green' && c.feedback.length === 0) ? ['Welke aanname in deze analyse zou een kritische FG waarschijnlijk als eerste willen toetsen?', ...baseQuestions] : baseQuestions;
+    const priorityQuestions = worklistQuestions.map((q, i) => `<li class="priority-question"><span class="priority-number">${i + 1}</span><span class="priority-text">${escapeHtml(q)}</span></li>`).join('');
     qs('#result-output').innerHTML = `<section class="result-panel result-header"><span class="result-section-label">Onderwerp analyse</span><h2 class="result-subject">${escapeHtml(subject)}</h2></section><section class="result-panel status-card result-status ${st}"><p class="result-status-line">${escapeHtml(statusHeadline)}</p><span class="status-label">Uitkomst</span><h2>${escapeHtml(copy[0])}</h2><p class="status-support">${escapeHtml(prioritySummary)}</p></section><section class="result-panel result-worklist"><h2>Vragen om eerst te beantwoorden</h2><ol class="priority-questions">${priorityQuestions}</ol></section><section class="result-panel result-advice"><h2>${escapeHtml(copy[1])}</h2><p>${escapeHtml(copy[2])}</p></section><section class="result-panel result-feedback"><h2>Geactiveerde tegenspraak</h2>${groupedFeedback(c.feedback)}</section>${c.strengths.length?`<section class="result-panel strength-list"><h2>Wat lijkt al sterk</h2><ul class="clean-list">${c.strengths.slice(0,8).map(s=>`<li>${escapeHtml(s)}</li>`).join('')}</ul></section>`:''}<details><summary>Toon mijn keuzes en uitgangspunten</summary><ol>${c.byStep.map(x=>`<li><strong>${escapeHtml(x.step.title)}</strong><br>${x.opts.length?x.opts.map(o=>escapeHtml(o.label)).join('<br>'):'Geen keuze'}${AppState.notes[x.step.id]?`<br><em>Notitie: ${escapeHtml(AppState.notes[x.step.id])}</em>`:''}</li>`).join('')}</ol></details><div class="wizard-actions"><button class="button primary" type="button" id="print-report-btn">Print/Opslaan als PDF</button><button class="button reset" type="button" id="restart-btn">Opnieuw starten</button><button class="button secondary" type="button" id="back-check">Terug naar check</button></div>`;
     setRoute('resultaat');
     qs('#print-report-btn').onclick = printDenkverslag;
