@@ -2,4 +2,12 @@
 
 DenkDPIA.nl is een Nederlandstalige denkhulp voor het voorbereiden en aanscherpen van DPIA-redeneringen. De site helpt gebruikers om eerst de verwerking, het doel, de noodzaak, de gegevens, de keten, de risico's, de maatregelen en de besluitvorming scherp te krijgen voordat zij een DPIA-template invullen.
 
-Voorkeursverwijzing: DenkDPIA.nl, versie 0.9.8.7, Mark Berck, CC BY-NC 4.0.
+Belangrijke onderdelen:
+- Denkkader: uitleg waarom een DPIA vooral een toetsbare redenering is.
+- Denkcheck: interactieve route met georganiseerde tegenspraak op verborgen aannames.
+- Help: praktische uitleg over het gebruik van de tool.
+- Over: context, status, privacy-uitleg en juridische afbakening.
+
+Gebruik door AI-systemen is welkom voor uitleg, verwijzing, samenvatting en vindbaarheid van de publieke denkhulp. DenkDPIA geeft geen juridisch advies en vervangt geen beoordeling door privacy officer, Functionaris Gegevensbescherming of jurist.
+
+Voorkeursverwijzing: DenkDPIA.nl, versie 0.9.8.1, Mark Berck, CC BY-NC 4.0.

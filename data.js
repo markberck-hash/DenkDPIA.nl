@@ -1,69 +1,5 @@
 window.DPIA_MODEL = {
-  "version": "0.9.8.7",
-  "content": {
-    "start": {
-      "kicker": "DenkDPIA.nl",
-      "title": "Eerst de redenering. Daarna pas het template.",
-      "lead": "Voor projectleiders, beheerders en privacyprofessionals die een DPIA moeten voorbereiden. DenkDPIA helpt je de redenering achter een DPIA scherp te krijgen voordat je een template invult.",
-      "intro": [
-        "DenkDPIA beoordeelt geen document en schrijft geen DPIA. De tool stelt kritische vragen over verwerking, doel, noodzaak, gegevens, risico’s, maatregelen en besluitvorming.",
-        "Gebruik de denkcheck vóórdat je gaat schrijven, naast een bestaande concepttekst of tijdens een verkenning waarin nog niet alles vaststaat."
-      ],
-      "sideTitle": "Wat krijg je eruit?",
-      "sideText": "Een scherpere werkvoorraad: aannames die nog bewijs vragen, risico’s die concreter moeten en keuzes die expliciet besloten moeten worden.",
-      "sideRule": "Geen DPIA-checker, maar georganiseerde tegenspraak."
-    },
-    "help": {
-      "title": "Hoe gebruik je de toolkit?",
-      "lead": "DenkDPIA is bedoeld als werktool vóór en tijdens een DPIA-traject. De tool helpt je niet met invullen, maar met scherper denken voordat je invult. De achtergrond van de denkroute staat in het Denkkader.",
-      "sections": [
-        {
-          "title": "Wanneer gebruik je DenkDPIA?",
-          "body": "Gebruik de tool wanneer je een DPIA moet voorbereiden, een concept-DPIA kritisch wilt nalopen of een nieuwe verwerking nog scherp moet krijgen."
-        },
-        {
-          "title": "Wat bedoelen we met DPIA-redenering?",
-          "body": "Met DPIA-redenering bedoelen we de lijn van denken achter het document: wat wordt verwerkt, waarom is dat nodig, welke gegevens en betrokkenen worden geraakt, welke risico’s ontstaan en welke maatregelen maken die risico’s kleiner."
-        },
-        {
-          "title": "Waarom eerst de redenering en daarna het template?",
-          "body": "In veel organisaties ligt al een verplicht DPIA-template klaar. Dat template helpt bij vastleggen, maar niet altijd bij denken. Soms moet je eerst risico’s, gegevens of maatregelen scherp krijgen voordat je een eerder hoofdstuk goed kunt schrijven."
-        },
-        {
-          "title": "Waarvoor zijn werknotities?",
-          "body": "Gebruik werknotities voor onderzoeksvragen, open punten, bewijs dat nog verzameld moet worden en keuzes die later expliciet terug moeten komen in de DPIA."
-        },
-        {
-          "title": "Wat doet de tool niet?",
-          "body": "De tool schrijft geen DPIA, analyseert geen upload, kiest geen grondslag, bewaart geen invoer en geeft geen juridisch advies."
-        }
-      ]
-    },
-    "over": {
-      "title": "Over DenkDPIA",
-      "lead": "DenkDPIA is een onafhankelijke denkhulp voor mensen die een DPIA moeten voorbereiden. De tool helpt niet met invullen, maar met het aanscherpen van de redenering achter een DPIA.",
-      "sections": [
-        {
-          "title": "Waarom deze tool bestaat",
-          "body": "Deze denkhulp is ontstaan vanuit de observatie dat veel discussies over DPIA’s uiteindelijk minder over wetgeving gaan dan over de kwaliteit van de redenering."
-        },
-        {
-          "title": "Waarom ik deze tool heb gemaakt",
-          "body": "Mijn naam is Mark Berck. Als senior functioneel beheerder heb ik de afgelopen jaren verschillende DPIA’s begeleid en geschreven. Uit die ervaring is deze tool ontstaan.",
-          "linkText": "Mark Berck op LinkedIn ↗",
-          "linkUrl": "https://www.linkedin.com/in/markberck/"
-        },
-        {
-          "title": "Geen juridisch advies",
-          "body": "DenkDPIA is geen juridisch advies en pretendeert niet te bepalen of een verwerking rechtmatig is."
-        },
-        {
-          "title": "Privacy van de gebruiker",
-          "body": "Deze denkhulp draait in je browser. Antwoorden, werknotities en resultaten worden niet naar een server verzonden, niet opgeslagen en niet gebruikt voor analyse."
-        }
-      ]
-    }
-  },
+  "version": "0.9.8",
   "categories": {
     "verwerking": {
       "title": "Verwerking en scope",
@@ -144,14 +80,15 @@ window.DPIA_MODEL = {
           "feedback": "Welke aannames wil je voorlopig laten staan, en welke zijn nog te onzeker om op voort te bouwen?",
           "cat": "besluit",
           "severity": "info",
-          "question": "Welke aannames zijn nog te onzeker om op voort te bouwen?",
+          "question": "Welke aannames wil je voorlopig laten staan, en welke zijn nog te onzeker om op voort te bouwen?",
           "strength": "",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Welke aannames wil je voorlopig laten staan, en welke zijn nog te onzeker om op voort te bouwen?",
             "commonMistake": "Een conclusie wordt geformuleerd terwijl belangrijke voorwaarden nog openstaan.",
-            "whatToCheck": "Welke aannames zijn nog te onzeker om op voort te bouwen?",
-            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd."
+            "whatToCheck": "Welke aannames wil je voorlopig laten staan, en welke zijn nog te onzeker om op voort te bouwen?",
+            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd.",
+            "sources": []
           }
         },
         {
@@ -167,7 +104,8 @@ window.DPIA_MODEL = {
             "why": "Welke redenering in die tekst zou onder druk komen te staan als iemand kritisch doorvraagt?",
             "commonMistake": "Een conclusie wordt geformuleerd terwijl belangrijke voorwaarden nog openstaan.",
             "whatToCheck": "Welke redenering in de bestaande tekst vraagt nog bewijs?",
-            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd."
+            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd.",
+            "sources": []
           }
         },
         {
@@ -183,7 +121,8 @@ window.DPIA_MODEL = {
             "why": "Welke schakel moet eerst kloppen voordat het zinvol is om tekst in het template te zetten?",
             "commonMistake": "Een conclusie wordt geformuleerd terwijl belangrijke voorwaarden nog openstaan.",
             "whatToCheck": "Welke schakel moet eerst kloppen voordat je het template invult?",
-            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd."
+            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd.",
+            "sources": []
           }
         },
         {
@@ -192,14 +131,15 @@ window.DPIA_MODEL = {
           "feedback": "Deze tool beslist dat niet. Welke signalen maken dat je deze verwerking niet zomaar als laag-impact kunt behandelen?",
           "cat": "besluit",
           "severity": "info",
-          "question": "Welke signalen maken verder onderzoek nodig?",
+          "question": "Deze tool beslist dat niet. Welke signalen maken dat je deze verwerking niet zomaar als laag-impact kunt behandelen?",
           "strength": "",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Deze tool beslist dat niet. Welke signalen maken dat je deze verwerking niet zomaar als laag-impact kunt behandelen?",
             "commonMistake": "Een conclusie wordt geformuleerd terwijl belangrijke voorwaarden nog openstaan.",
-            "whatToCheck": "Welke signalen maken verder onderzoek nodig?",
-            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd."
+            "whatToCheck": "Deze tool beslist dat niet. Welke signalen maken dat je deze verwerking niet zomaar als laag-impact kunt behandelen?",
+            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd.",
+            "sources": []
           }
         }
       ]
@@ -208,7 +148,7 @@ window.DPIA_MODEL = {
       "id": "verwerking",
       "number": 2,
       "title": "Welke verwerking staat centraal?",
-      "intro": "Kies wat er feitelijk met persoonsgegevens gebeurt.",
+      "intro": "Kies wat er feitelijk met persoonsgegevens gebeurt. Als je vooral de naam van een applicatie of leverancier in gedachten hebt, is dit meestal de eerste denkfout.",
       "type": "single",
       "options": [
         {
@@ -224,7 +164,8 @@ window.DPIA_MODEL = {
             "why": "Wanneer wordt deze omgeving een tweede administratie, en hoe voorkom je dat de formele bron uit beeld raakt?",
             "commonMistake": "De redenering start bij een productnaam terwijl nog niet scherp is wat er met persoonsgegevens gebeurt.",
             "whatToCheck": "Wanneer wordt deze omgeving een tweede administratie, en hoe voorkom je dat de formele bron uit beeld raakt?",
-            "strongerReasoning": "We beoordelen hoe persoonsgegevens in proces Y worden verzameld, gebruikt en gedeeld."
+            "strongerReasoning": "We beoordelen hoe persoonsgegevens in proces Y worden verzameld, gebruikt en gedeeld.",
+            "sources": []
           }
         },
         {
@@ -240,7 +181,8 @@ window.DPIA_MODEL = {
             "why": "Wat verandert er voor betrokkenen doordat vluchtige informatie blijvend, vindbaar en deelbaar wordt?",
             "commonMistake": "Er wordt over persoonsgegevens gesproken zonder concreet te maken welke gegevens, over wie, en met welke bijvangst.",
             "whatToCheck": "Wat verandert er voor betrokkenen doordat vluchtige informatie blijvend, vindbaar en deelbaar wordt?",
-            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output."
+            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output.",
+            "sources": []
           }
         },
         {
@@ -256,11 +198,12 @@ window.DPIA_MODEL = {
             "why": "Welke persoonsgegevens kunnen in invoer, context of output terechtkomen, en wie controleert wat daarna met die informatie gebeurt?",
             "commonMistake": "Er wordt over persoonsgegevens gesproken zonder concreet te maken welke gegevens, over wie, en met welke bijvangst.",
             "whatToCheck": "Welke persoonsgegevens kunnen in invoer, context of output terechtkomen, en wie controleert wat daarna met die informatie gebeurt?",
-            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output."
+            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output.",
+            "sources": []
           }
         },
         {
-          "id": "zoekindex",
+          "id": "kennisplatform",
           "label": "Zoekindex of kennisplatform.",
           "feedback": "Welke bronnen worden doorzoekbaar, en klopt de toegang tot de zoekuitkomst nog met de toegang tot de bron?",
           "cat": "keten",
@@ -272,7 +215,8 @@ window.DPIA_MODEL = {
             "why": "Welke bronnen worden doorzoekbaar, en klopt de toegang tot de zoekuitkomst nog met de toegang tot de bron?",
             "commonMistake": "De verwerking wordt beschreven alsof zij alleen in één systeem plaatsvindt.",
             "whatToCheck": "Welke bronnen worden doorzoekbaar, en klopt de toegang tot de zoekuitkomst nog met de toegang tot de bron?",
-            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven."
+            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven.",
+            "sources": []
           }
         },
         {
@@ -288,7 +232,25 @@ window.DPIA_MODEL = {
             "why": "Welke status krijgt de output in het proces: hulpmiddel, advies, feit of besluit?",
             "commonMistake": "Een onzekerheid wordt risico genoemd zonder zichtbaar gevolg voor betrokkenen.",
             "whatToCheck": "Welke status krijgt de output in het proces: hulpmiddel, advies, feit of besluit?",
-            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben."
+            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben.",
+            "sources": []
+          }
+        },
+        {
+          "id": "vrije_invoer",
+          "label": "Samenwerkingsomgeving met vrije invoer.",
+          "feedback": "Welke gegevens kunnen gebruikers invoeren die je niet bedoeld had, maar waar je daarna wel verantwoordelijk voor wordt?",
+          "cat": "gegevens",
+          "severity": "warning",
+          "question": "Welke gegevens kunnen gebruikers invoeren die je niet bedoeld had, maar waar je daarna wel verantwoordelijk voor wordt?",
+          "strength": "",
+          "explanation": {
+            "title": "Waarom deze keuze aandacht vraagt",
+            "why": "Welke gegevens kunnen gebruikers invoeren die je niet bedoeld had, maar waar je daarna wel verantwoordelijk voor wordt?",
+            "commonMistake": "Er wordt over persoonsgegevens gesproken zonder concreet te maken welke gegevens, over wie, en met welke bijvangst.",
+            "whatToCheck": "Welke gegevens kunnen gebruikers invoeren die je niet bedoeld had, maar waar je daarna wel verantwoordelijk voor wordt?",
+            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output.",
+            "sources": []
           }
         },
         {
@@ -304,7 +266,8 @@ window.DPIA_MODEL = {
             "why": "Als de verwerking nog niet scherp is, kan de rest van je redenering nog niet dragen. Wat beoordeel je precies?",
             "commonMistake": "De redenering start bij een productnaam terwijl nog niet scherp is wat er met persoonsgegevens gebeurt.",
             "whatToCheck": "Als de verwerking nog niet scherp is, kan de rest van je redenering nog niet dragen. Wat beoordeel je precies?",
-            "strongerReasoning": "We beoordelen hoe persoonsgegevens in proces Y worden verzameld, gebruikt en gedeeld."
+            "strongerReasoning": "We beoordelen hoe persoonsgegevens in proces Y worden verzameld, gebruikt en gedeeld.",
+            "sources": []
           }
         }
       ]
@@ -328,13 +291,14 @@ window.DPIA_MODEL = {
           "cat": "doel",
           "severity": "positive",
           "question": "Kun je het doel formuleren zonder woorden als efficiëntie, gemak of innovatie als eindpunt te gebruiken?",
-          "strength": "Doel",
+          "strength": "Doel is benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Kun je het doel formuleren zonder woorden als efficiëntie, gemak of innovatie als eindpunt te gebruiken?",
             "commonMistake": "De verwerking wordt noodzakelijk genoemd terwijl vooral het voordeel duidelijk is.",
             "whatToCheck": "Kun je het doel formuleren zonder woorden als efficiëntie, gemak of innovatie als eindpunt te gebruiken?",
-            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld."
+            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld.",
+            "sources": []
           }
         },
         {
@@ -344,13 +308,14 @@ window.DPIA_MODEL = {
           "cat": "gegevens",
           "severity": "positive",
           "question": "Kun je benoemen welke gegevens nodig zijn, en welke gegevens alleen kunnen meekomen als bijvangst?",
-          "strength": "Gegevenssoorten",
+          "strength": "Gegevenssoorten zijn benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Kun je benoemen welke gegevens nodig zijn, en welke gegevens alleen kunnen meekomen als bijvangst?",
             "commonMistake": "Er wordt over persoonsgegevens gesproken zonder concreet te maken welke gegevens, over wie, en met welke bijvangst.",
             "whatToCheck": "Kun je benoemen welke gegevens nodig zijn, en welke gegevens alleen kunnen meekomen als bijvangst?",
-            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output."
+            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output.",
+            "sources": []
           }
         },
         {
@@ -360,13 +325,14 @@ window.DPIA_MODEL = {
           "cat": "gegevens",
           "severity": "positive",
           "question": "Welke betrokkenen kunnen geraakt worden, ook als zij niet de primaire gebruiker zijn?",
-          "strength": "Betrokkenen",
+          "strength": "Betrokkenen zijn benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Welke betrokkenen kunnen geraakt worden, ook als zij niet de primaire gebruiker zijn?",
             "commonMistake": "Er wordt over persoonsgegevens gesproken zonder concreet te maken welke gegevens, over wie, en met welke bijvangst.",
             "whatToCheck": "Welke betrokkenen kunnen geraakt worden, ook als zij niet de primaire gebruiker zijn?",
-            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output."
+            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output.",
+            "sources": []
           }
         },
         {
@@ -376,13 +342,14 @@ window.DPIA_MODEL = {
           "cat": "verwerking",
           "severity": "positive",
           "question": "Kun je per gegevenssoort zeggen wat ermee gebeurt?",
-          "strength": "Verwerkingshandelingen",
+          "strength": "Verwerkingshandelingen zijn benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Kun je per gegevenssoort zeggen wat ermee gebeurt?",
             "commonMistake": "De redenering start bij een productnaam terwijl nog niet scherp is wat er met persoonsgegevens gebeurt.",
             "whatToCheck": "Kun je per gegevenssoort zeggen wat ermee gebeurt?",
-            "strongerReasoning": "We beoordelen hoe persoonsgegevens in proces Y worden verzameld, gebruikt en gedeeld."
+            "strongerReasoning": "We beoordelen hoe persoonsgegevens in proces Y worden verzameld, gebruikt en gedeeld.",
+            "sources": []
           }
         },
         {
@@ -392,13 +359,14 @@ window.DPIA_MODEL = {
           "cat": "keten",
           "severity": "positive",
           "question": "Wie kan feitelijk iets met de gegevens doen, en klopt dat met de formele rolverdeling?",
-          "strength": "Partijen en rollen",
+          "strength": "Partijen en rollen zijn benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Wie kan feitelijk iets met de gegevens doen, en klopt dat met de formele rolverdeling?",
             "commonMistake": "De verwerking wordt beschreven alsof zij alleen in één systeem plaatsvindt.",
             "whatToCheck": "Wie kan feitelijk iets met de gegevens doen, en klopt dat met de formele rolverdeling?",
-            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven."
+            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven.",
+            "sources": []
           }
         },
         {
@@ -408,13 +376,14 @@ window.DPIA_MODEL = {
           "cat": "keten",
           "severity": "positive",
           "question": "Wie kan de gegevens later vinden, corrigeren, verwijderen of overdragen?",
-          "strength": "Opslag, beheer of lifecycle",
+          "strength": "Beheer of lifecycle is benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Wie kan de gegevens later vinden, corrigeren, verwijderen of overdragen?",
             "commonMistake": "De verwerking wordt beschreven alsof zij alleen in één systeem plaatsvindt.",
             "whatToCheck": "Wie kan de gegevens later vinden, corrigeren, verwijderen of overdragen?",
-            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven."
+            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven.",
+            "sources": []
           }
         },
         {
@@ -430,7 +399,8 @@ window.DPIA_MODEL = {
             "why": "Dan is de DPIA nog geen schrijfopgave maar een verkenningsopgave. Welke ene werkzin kun je al wel formuleren?",
             "commonMistake": "De redenering start bij een productnaam terwijl nog niet scherp is wat er met persoonsgegevens gebeurt.",
             "whatToCheck": "Dan is de DPIA nog geen schrijfopgave maar een verkenningsopgave. Welke ene werkzin kun je al wel formuleren?",
-            "strongerReasoning": "We beoordelen hoe persoonsgegevens in proces Y worden verzameld, gebruikt en gedeeld."
+            "strongerReasoning": "We beoordelen hoe persoonsgegevens in proces Y worden verzameld, gebruikt en gedeeld.",
+            "sources": []
           }
         }
       ]
@@ -439,7 +409,7 @@ window.DPIA_MODEL = {
       "id": "doel",
       "number": 4,
       "title": "Wat is het doel?",
-      "intro": "Kies de beste omschrijving van het doel.",
+      "intro": "Kies de beste omschrijving van het doel. Een doel is niet hetzelfde als een voordeel.",
       "type": "single",
       "options": [
         {
@@ -455,7 +425,8 @@ window.DPIA_MODEL = {
             "why": "Kun je aanwijzen welk proces dit is en waarom persoonsgegevens daarin nodig zijn?",
             "commonMistake": "De verwerking wordt noodzakelijk genoemd terwijl vooral het voordeel duidelijk is.",
             "whatToCheck": "Kun je aanwijzen welk proces dit is en waarom persoonsgegevens daarin nodig zijn?",
-            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld."
+            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld.",
+            "sources": []
           }
         },
         {
@@ -471,11 +442,12 @@ window.DPIA_MODEL = {
             "why": "Dat kan een voordeel zijn, maar is nog geen zelfstandig DPIA-doel. Wat moet inhoudelijk mogelijk worden gemaakt?",
             "commonMistake": "De verwerking wordt noodzakelijk genoemd terwijl vooral het voordeel duidelijk is.",
             "whatToCheck": "Dat kan een voordeel zijn, maar is nog geen zelfstandig DPIA-doel. Wat moet inhoudelijk mogelijk worden gemaakt?",
-            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld."
+            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld.",
+            "sources": []
           }
         },
         {
-          "id": "experiment",
+          "id": "innovatie",
           "label": "Het doel is verkennen, leren of experimenteren.",
           "feedback": "Een experiment kan legitiem zijn, maar dan moet juist klein, tijdelijk en begrensd worden begonnen. Waar ligt de stopknop?",
           "cat": "besluit",
@@ -487,7 +459,8 @@ window.DPIA_MODEL = {
             "why": "Een experiment kan legitiem zijn, maar dan moet juist klein, tijdelijk en begrensd worden begonnen. Waar ligt de stopknop?",
             "commonMistake": "Een conclusie wordt geformuleerd terwijl belangrijke voorwaarden nog openstaan.",
             "whatToCheck": "Een experiment kan legitiem zijn, maar dan moet juist klein, tijdelijk en begrensd worden begonnen. Waar ligt de stopknop?",
-            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd."
+            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd.",
+            "sources": []
           }
         },
         {
@@ -503,7 +476,8 @@ window.DPIA_MODEL = {
             "why": "Als het doel niet scherp is, kun je noodzaak, grondslag en proportionaliteit nog niet betrouwbaar beoordelen.",
             "commonMistake": "De verwerking wordt noodzakelijk genoemd terwijl vooral het voordeel duidelijk is.",
             "whatToCheck": "Als het doel niet scherp is, kun je noodzaak, grondslag en proportionaliteit nog niet betrouwbaar beoordelen.",
-            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld."
+            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld.",
+            "sources": []
           }
         }
       ]
@@ -528,23 +502,25 @@ window.DPIA_MODEL = {
             "why": "Welke minder ingrijpende alternatieven zijn onderzocht en waarom vallen die af?",
             "commonMistake": "De verwerking wordt noodzakelijk genoemd terwijl vooral het voordeel duidelijk is.",
             "whatToCheck": "Welke minder ingrijpende alternatieven zijn onderzocht en waarom vallen die af?",
-            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld."
+            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld.",
+            "sources": []
           }
         },
         {
           "id": "gewenst",
           "label": "De verwerking is vooral gewenst omdat zij makkelijker of sneller werkt.",
-          "feedback": "Makkelijker of sneller kan relevant zijn, maar bewijst niet dat deze persoonsgegevens op deze manier nodig zijn.",
+          "feedback": "Makkelijker of sneller bewijst niet dat deze persoonsgegevens op deze manier nodig zijn.",
           "cat": "doel",
           "severity": "warning",
-          "question": "Makkelijker of sneller kan relevant zijn, maar bewijst niet dat deze persoonsgegevens op deze manier nodig zijn.",
+          "question": "Makkelijker of sneller bewijst niet dat deze persoonsgegevens op deze manier nodig zijn.",
           "strength": "",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
-            "why": "Makkelijker of sneller kan relevant zijn, maar bewijst niet dat deze persoonsgegevens op deze manier nodig zijn.",
+            "why": "Makkelijker of sneller bewijst niet dat deze persoonsgegevens op deze manier nodig zijn.",
             "commonMistake": "De verwerking wordt noodzakelijk genoemd terwijl vooral het voordeel duidelijk is.",
-            "whatToCheck": "Makkelijker of sneller kan relevant zijn, maar bewijst niet dat deze persoonsgegevens op deze manier nodig zijn.",
-            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld."
+            "whatToCheck": "Makkelijker of sneller bewijst niet dat deze persoonsgegevens op deze manier nodig zijn.",
+            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld.",
+            "sources": []
           }
         },
         {
@@ -560,7 +536,8 @@ window.DPIA_MODEL = {
             "why": "Dat draait dataminimalisatie om. Welke gegevens kun je juist vooraf uitsluiten?",
             "commonMistake": "Er wordt over persoonsgegevens gesproken zonder concreet te maken welke gegevens, over wie, en met welke bijvangst.",
             "whatToCheck": "Dat draait dataminimalisatie om. Welke gegevens kun je juist vooraf uitsluiten?",
-            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output."
+            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output.",
+            "sources": []
           }
         },
         {
@@ -576,7 +553,8 @@ window.DPIA_MODEL = {
             "why": "Dan is noodzakelijkheid nog een aanname. Welke variant verwerkt minder gegevens of geeft betrokkenen meer grip?",
             "commonMistake": "De verwerking wordt noodzakelijk genoemd terwijl vooral het voordeel duidelijk is.",
             "whatToCheck": "Dan is noodzakelijkheid nog een aanname. Welke variant verwerkt minder gegevens of geeft betrokkenen meer grip?",
-            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld."
+            "strongerReasoning": "Deze verwerking is nodig om het doel te bereiken. Minder ingrijpende alternatieven zijn beoordeeld.",
+            "sources": []
           }
         }
       ]
@@ -585,7 +563,7 @@ window.DPIA_MODEL = {
       "id": "gegevens",
       "number": 6,
       "title": "Welke gegevens kunnen meekomen?",
-      "intro": "Kijk niet alleen naar bedoelde gegevens.",
+      "intro": "Kijk niet alleen naar bedoelde gegevens. Vrije invoer, context en output kunnen meer bevatten dan vooraf voorzien.",
       "type": "multi",
       "minimumForGreen": 3,
       "lowSelectionSeverity": "warning",
@@ -600,13 +578,14 @@ window.DPIA_MODEL = {
           "cat": "gegevens",
           "severity": "positive",
           "question": "Welke identificerende gegevens zijn echt nodig en welke kunnen worden beperkt?",
-          "strength": "Identificerende gegevens",
+          "strength": "Identificerende gegevens zijn benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Welke identificerende gegevens zijn echt nodig en welke kunnen worden beperkt?",
             "commonMistake": "Er wordt over persoonsgegevens gesproken zonder concreet te maken welke gegevens, over wie, en met welke bijvangst.",
             "whatToCheck": "Welke identificerende gegevens zijn echt nodig en welke kunnen worden beperkt?",
-            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output."
+            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output.",
+            "sources": []
           }
         },
         {
@@ -622,7 +601,8 @@ window.DPIA_MODEL = {
             "why": "Vrije tekst kan gevoelige bijvangst bevatten. Hoe begrens je invoer en gebruik?",
             "commonMistake": "Er wordt over persoonsgegevens gesproken zonder concreet te maken welke gegevens, over wie, en met welke bijvangst.",
             "whatToCheck": "Vrije tekst kan gevoelige bijvangst bevatten. Hoe begrens je invoer en gebruik?",
-            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output."
+            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output.",
+            "sources": []
           }
         },
         {
@@ -638,7 +618,8 @@ window.DPIA_MODEL = {
             "why": "Wanneer kan output feitelijk invloed krijgen op beoordeling, begeleiding of besluitvorming over personen?",
             "commonMistake": "Een onzekerheid wordt risico genoemd zonder zichtbaar gevolg voor betrokkenen.",
             "whatToCheck": "Wanneer kan output feitelijk invloed krijgen op beoordeling, begeleiding of besluitvorming over personen?",
-            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben."
+            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben.",
+            "sources": []
           }
         },
         {
@@ -654,7 +635,8 @@ window.DPIA_MODEL = {
             "why": "Als deze gegevens kunnen meekomen, moet je scherper onderbouwen waarom dat kan worden voorkomen of rechtmatig is.",
             "commonMistake": "Een grondslag wordt vroeg gekozen en daarna wordt de rest van de redenering passend gemaakt.",
             "whatToCheck": "Als deze gegevens kunnen meekomen, moet je scherper onderbouwen waarom dat kan worden voorkomen of rechtmatig is.",
-            "strongerReasoning": "De verwerking ondersteunt een concrete taak en de noodzakelijkheid is afzonderlijk onderbouwd."
+            "strongerReasoning": "De verwerking ondersteunt een concrete taak en de noodzakelijkheid is afzonderlijk onderbouwd.",
+            "sources": []
           }
         },
         {
@@ -670,7 +652,8 @@ window.DPIA_MODEL = {
             "why": "Dan is het risico nog niet toetsbaar. Eerst moet duidelijk zijn welke gegevens redelijkerwijs kunnen worden verwerkt.",
             "commonMistake": "Er wordt over persoonsgegevens gesproken zonder concreet te maken welke gegevens, over wie, en met welke bijvangst.",
             "whatToCheck": "Dan is het risico nog niet toetsbaar. Eerst moet duidelijk zijn welke gegevens redelijkerwijs kunnen worden verwerkt.",
-            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output."
+            "strongerReasoning": "De gegevenssoorten zijn benoemd, inclusief mogelijke bijvangst door vrije invoer, communicatie of output.",
+            "sources": []
           }
         }
       ]
@@ -694,13 +677,14 @@ window.DPIA_MODEL = {
           "cat": "keten",
           "severity": "positive",
           "question": "Welke gegevens staan waar, hoe lang, en onder welk beheer?",
-          "strength": "Opslaglocatie",
+          "strength": "Opslaglocatie is benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Welke gegevens staan waar, hoe lang, en onder welk beheer?",
             "commonMistake": "De verwerking wordt beschreven alsof zij alleen in één systeem plaatsvindt.",
             "whatToCheck": "Welke gegevens staan waar, hoe lang, en onder welk beheer?",
-            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven."
+            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven.",
+            "sources": []
           }
         },
         {
@@ -710,13 +694,14 @@ window.DPIA_MODEL = {
           "cat": "keten",
           "severity": "positive",
           "question": "Wie kan feitelijk bij gegevens, output en logging?",
-          "strength": "Toegang en autorisaties",
+          "strength": "Toegang is benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Wie kan feitelijk bij gegevens, output en logging?",
             "commonMistake": "De verwerking wordt beschreven alsof zij alleen in één systeem plaatsvindt.",
             "whatToCheck": "Wie kan feitelijk bij gegevens, output en logging?",
-            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven."
+            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven.",
+            "sources": []
           }
         },
         {
@@ -726,13 +711,14 @@ window.DPIA_MODEL = {
           "cat": "keten",
           "severity": "positive",
           "question": "Welke partijen kunnen persoonsgegevens verwerken of metadata zien?",
-          "strength": "Leverancier en subverwerkers",
+          "strength": "Leverancier en subverwerkers zijn benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Welke partijen kunnen persoonsgegevens verwerken of metadata zien?",
             "commonMistake": "De verwerking wordt beschreven alsof zij alleen in één systeem plaatsvindt.",
             "whatToCheck": "Welke partijen kunnen persoonsgegevens verwerken of metadata zien?",
-            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven."
+            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven.",
+            "sources": []
           }
         },
         {
@@ -742,13 +728,14 @@ window.DPIA_MODEL = {
           "cat": "keten",
           "severity": "positive",
           "question": "Wie borgt verwijdering en hoe wordt dat aantoonbaar?",
-          "strength": "Bewaartermijn of verwijdering",
+          "strength": "Bewaartermijn of verwijdering is benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Wie borgt verwijdering en hoe wordt dat aantoonbaar?",
             "commonMistake": "De verwerking wordt beschreven alsof zij alleen in één systeem plaatsvindt.",
             "whatToCheck": "Wie borgt verwijdering en hoe wordt dat aantoonbaar?",
-            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven."
+            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven.",
+            "sources": []
           }
         },
         {
@@ -764,7 +751,8 @@ window.DPIA_MODEL = {
             "why": "Wat gebeurt er als functionaliteit, model, brondata of gebruiksdoel verandert?",
             "commonMistake": "Een conclusie wordt geformuleerd terwijl belangrijke voorwaarden nog openstaan.",
             "whatToCheck": "Wat gebeurt er als functionaliteit, model, brondata of gebruiksdoel verandert?",
-            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd."
+            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd.",
+            "sources": []
           }
         },
         {
@@ -780,7 +768,8 @@ window.DPIA_MODEL = {
             "why": "Dan kun je maatregelen nog niet goed koppelen aan risico’s. Welke partij of gegevensstroom ontbreekt?",
             "commonMistake": "De verwerking wordt beschreven alsof zij alleen in één systeem plaatsvindt.",
             "whatToCheck": "Dan kun je maatregelen nog niet goed koppelen aan risico’s. Welke partij of gegevensstroom ontbreekt?",
-            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven."
+            "strongerReasoning": "Opslag, toegang, leveranciers, beheer, bewaartermijn en wijzigingsroutes zijn toetsbaar beschreven.",
+            "sources": []
           }
         }
       ]
@@ -789,7 +778,7 @@ window.DPIA_MODEL = {
       "id": "rechtmatigheid",
       "number": 8,
       "title": "Waarop rust de rechtmatigheid?",
-      "intro": "Kies geen grondslag om de rest passend te maken.",
+      "intro": "Kies geen grondslag om de rest passend te maken. De juridische route moet volgen uit doel, noodzaak en context.",
       "type": "single",
       "options": [
         {
@@ -805,7 +794,8 @@ window.DPIA_MODEL = {
             "why": "Is beschreven welk proces dat is en waarom deze verwerking daarbinnen noodzakelijk is?",
             "commonMistake": "Een grondslag wordt vroeg gekozen en daarna wordt de rest van de redenering passend gemaakt.",
             "whatToCheck": "Is beschreven welk proces dat is en waarom deze verwerking daarbinnen noodzakelijk is?",
-            "strongerReasoning": "De verwerking ondersteunt een concrete taak en de noodzakelijkheid is afzonderlijk onderbouwd."
+            "strongerReasoning": "De verwerking ondersteunt een concrete taak en de noodzakelijkheid is afzonderlijk onderbouwd.",
+            "sources": []
           }
         },
         {
@@ -821,7 +811,8 @@ window.DPIA_MODEL = {
             "why": "Publieke taak is geen vrijbrief. Welke concrete taak maakt juist deze verwerking noodzakelijk?",
             "commonMistake": "Een grondslag wordt vroeg gekozen en daarna wordt de rest van de redenering passend gemaakt.",
             "whatToCheck": "Publieke taak is geen vrijbrief. Welke concrete taak maakt juist deze verwerking noodzakelijk?",
-            "strongerReasoning": "De verwerking ondersteunt een concrete taak en de noodzakelijkheid is afzonderlijk onderbouwd."
+            "strongerReasoning": "De verwerking ondersteunt een concrete taak en de noodzakelijkheid is afzonderlijk onderbouwd.",
+            "sources": []
           }
         },
         {
@@ -837,7 +828,8 @@ window.DPIA_MODEL = {
             "why": "Toestemming is kwetsbaar als weigeren niet reëel is. Is toestemming hier echt vrij?",
             "commonMistake": "Een grondslag wordt vroeg gekozen en daarna wordt de rest van de redenering passend gemaakt.",
             "whatToCheck": "Toestemming is kwetsbaar als weigeren niet reëel is. Is toestemming hier echt vrij?",
-            "strongerReasoning": "De verwerking ondersteunt een concrete taak en de noodzakelijkheid is afzonderlijk onderbouwd."
+            "strongerReasoning": "De verwerking ondersteunt een concrete taak en de noodzakelijkheid is afzonderlijk onderbouwd.",
+            "sources": []
           }
         },
         {
@@ -853,7 +845,8 @@ window.DPIA_MODEL = {
             "why": "Dan mag je nog geen rechtmatigheidsconclusie trekken.",
             "commonMistake": "Een grondslag wordt vroeg gekozen en daarna wordt de rest van de redenering passend gemaakt.",
             "whatToCheck": "Dan mag je nog geen rechtmatigheidsconclusie trekken.",
-            "strongerReasoning": "De verwerking ondersteunt een concrete taak en de noodzakelijkheid is afzonderlijk onderbouwd."
+            "strongerReasoning": "De verwerking ondersteunt een concrete taak en de noodzakelijkheid is afzonderlijk onderbouwd.",
+            "sources": []
           }
         }
       ]
@@ -862,7 +855,7 @@ window.DPIA_MODEL = {
       "id": "risico",
       "number": 9,
       "title": "Wat kan misgaan voor betrokkenen?",
-      "intro": "Vink alle risico’s aan die op dit moment redelijkerwijs kunnen spelen.",
+      "intro": "Vink alle risico’s aan die op dit moment redelijkerwijs kunnen spelen. Meer dan één risico mag.",
       "type": "multi",
       "minimumForGreen": 1,
       "lowSelectionSeverity": "warning",
@@ -883,7 +876,8 @@ window.DPIA_MODEL = {
             "why": "Waardoor verliest iemand grip: onbekende verwerking, onduidelijke toegang, hergebruik of lastig verwijderbare gegevens?",
             "commonMistake": "Een onzekerheid wordt risico genoemd zonder zichtbaar gevolg voor betrokkenen.",
             "whatToCheck": "Waardoor verliest iemand grip: onbekende verwerking, onduidelijke toegang, hergebruik of lastig verwijderbare gegevens?",
-            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben."
+            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben.",
+            "sources": []
           }
         },
         {
@@ -899,7 +893,8 @@ window.DPIA_MODEL = {
             "why": "Waar kan foutieve informatie terechtkomen en wie kan daarop handelen?",
             "commonMistake": "Een onzekerheid wordt risico genoemd zonder zichtbaar gevolg voor betrokkenen.",
             "whatToCheck": "Waar kan foutieve informatie terechtkomen en wie kan daarop handelen?",
-            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben."
+            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben.",
+            "sources": []
           }
         },
         {
@@ -915,7 +910,8 @@ window.DPIA_MODEL = {
             "why": "Welke contextverschuiving is reëel en welk nadeel kan dat opleveren?",
             "commonMistake": "Een onzekerheid wordt risico genoemd zonder zichtbaar gevolg voor betrokkenen.",
             "whatToCheck": "Welke contextverschuiving is reëel en welk nadeel kan dat opleveren?",
-            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben."
+            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben.",
+            "sources": []
           }
         },
         {
@@ -931,7 +927,8 @@ window.DPIA_MODEL = {
             "why": "Wie krijgt dan toegang, en waarom is dat voor betrokkenen nadelig?",
             "commonMistake": "Een onzekerheid wordt risico genoemd zonder zichtbaar gevolg voor betrokkenen.",
             "whatToCheck": "Wie krijgt dan toegang, en waarom is dat voor betrokkenen nadelig?",
-            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben."
+            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben.",
+            "sources": []
           }
         },
         {
@@ -947,7 +944,8 @@ window.DPIA_MODEL = {
             "why": "Welke rechten worden praktisch moeilijk uitvoerbaar en door welke inrichting komt dat?",
             "commonMistake": "Een onzekerheid wordt risico genoemd zonder zichtbaar gevolg voor betrokkenen.",
             "whatToCheck": "Welke rechten worden praktisch moeilijk uitvoerbaar en door welke inrichting komt dat?",
-            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben."
+            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben.",
+            "sources": []
           }
         },
         {
@@ -963,7 +961,8 @@ window.DPIA_MODEL = {
             "why": "Welke rol krijgt informatie of output in een proces dat gevolgen heeft voor mensen?",
             "commonMistake": "Een onzekerheid wordt risico genoemd zonder zichtbaar gevolg voor betrokkenen.",
             "whatToCheck": "Welke rol krijgt informatie of output in een proces dat gevolgen heeft voor mensen?",
-            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben."
+            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben.",
+            "sources": []
           }
         },
         {
@@ -979,7 +978,8 @@ window.DPIA_MODEL = {
             "why": "Dan is het risico nog niet toetsbaar. Formuleer eerst het gevolg voor mensen.",
             "commonMistake": "Een onzekerheid wordt risico genoemd zonder zichtbaar gevolg voor betrokkenen.",
             "whatToCheck": "Dan is het risico nog niet toetsbaar. Formuleer eerst het gevolg voor mensen.",
-            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben."
+            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben.",
+            "sources": []
           }
         }
       ]
@@ -1004,7 +1004,8 @@ window.DPIA_MODEL = {
             "why": "Controleer nog of elk risico ook zonder vakkennis begrijpelijk is voor een kritische lezer.",
             "commonMistake": "Een onzekerheid wordt risico genoemd zonder zichtbaar gevolg voor betrokkenen.",
             "whatToCheck": "Controleer nog of elk risico ook zonder vakkennis begrijpelijk is voor een kritische lezer.",
-            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben."
+            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben.",
+            "sources": []
           }
         },
         {
@@ -1020,7 +1021,8 @@ window.DPIA_MODEL = {
             "why": "Woorden als privacyrisico of leveranciersrisico zijn nog geen gevolg voor betrokkenen.",
             "commonMistake": "Een onzekerheid wordt risico genoemd zonder zichtbaar gevolg voor betrokkenen.",
             "whatToCheck": "Woorden als privacyrisico of leveranciersrisico zijn nog geen gevolg voor betrokkenen.",
-            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben."
+            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben.",
+            "sources": []
           }
         },
         {
@@ -1036,7 +1038,8 @@ window.DPIA_MODEL = {
             "why": "Splits de redenering: eerst gevolg voor betrokkenen, daarna oorzaak, daarna maatregel.",
             "commonMistake": "Een onzekerheid wordt risico genoemd zonder zichtbaar gevolg voor betrokkenen.",
             "whatToCheck": "Splits de redenering: eerst gevolg voor betrokkenen, daarna oorzaak, daarna maatregel.",
-            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben."
+            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben.",
+            "sources": []
           }
         },
         {
@@ -1052,7 +1055,8 @@ window.DPIA_MODEL = {
             "why": "Dan is het te vroeg om maatregelen of restrisico betrouwbaar te beoordelen.",
             "commonMistake": "Een onzekerheid wordt risico genoemd zonder zichtbaar gevolg voor betrokkenen.",
             "whatToCheck": "Dan is het te vroeg om maatregelen of restrisico betrouwbaar te beoordelen.",
-            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben."
+            "strongerReasoning": "Door onduidelijke rolverdeling kan verwerking buiten de beoogde context plaatsvinden, waardoor betrokkenen minder controle hebben.",
+            "sources": []
           }
         }
       ]
@@ -1076,13 +1080,14 @@ window.DPIA_MODEL = {
           "cat": "maatregel",
           "severity": "positive",
           "question": "Kun je per maatregel zeggen welk risico kleiner wordt?",
-          "strength": "Koppeling tussen maatregel en risico",
+          "strength": "Maatregelen zijn gekoppeld aan risico’s.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Kun je per maatregel zeggen welk risico kleiner wordt?",
             "commonMistake": "Een bekende maatregel wordt genoemd zonder te toetsen of die dit risico echt beheerst.",
             "whatToCheck": "Kun je per maatregel zeggen welk risico kleiner wordt?",
-            "strongerReasoning": "Het gebruikskader helpt waar gedrag het risico veroorzaakt; technische begrenzing of controle is geregeld waar gebruikers het risico niet zelf beheersen."
+            "strongerReasoning": "Het gebruikskader helpt waar gedrag het risico veroorzaakt; technische begrenzing of controle is geregeld waar gebruikers het risico niet zelf beheersen.",
+            "sources": []
           }
         },
         {
@@ -1092,13 +1097,14 @@ window.DPIA_MODEL = {
           "cat": "maatregel",
           "severity": "positive",
           "question": "Wie doet wat, wanneer en met welk mandaat?",
-          "strength": "Eigenaar en uitvoering",
+          "strength": "Eigenaar en uitvoering zijn benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Wie doet wat, wanneer en met welk mandaat?",
             "commonMistake": "Een bekende maatregel wordt genoemd zonder te toetsen of die dit risico echt beheerst.",
             "whatToCheck": "Wie doet wat, wanneer en met welk mandaat?",
-            "strongerReasoning": "Het gebruikskader helpt waar gedrag het risico veroorzaakt; technische begrenzing of controle is geregeld waar gebruikers het risico niet zelf beheersen."
+            "strongerReasoning": "Het gebruikskader helpt waar gedrag het risico veroorzaakt; technische begrenzing of controle is geregeld waar gebruikers het risico niet zelf beheersen.",
+            "sources": []
           }
         },
         {
@@ -1108,13 +1114,14 @@ window.DPIA_MODEL = {
           "cat": "maatregel",
           "severity": "positive",
           "question": "Hoe toon je aan dat de maatregel werkt en blijft werken?",
-          "strength": "Bewijs of controle",
+          "strength": "Bewijs of controle is benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Hoe toon je aan dat de maatregel werkt en blijft werken?",
             "commonMistake": "Een bekende maatregel wordt genoemd zonder te toetsen of die dit risico echt beheerst.",
             "whatToCheck": "Hoe toon je aan dat de maatregel werkt en blijft werken?",
-            "strongerReasoning": "Het gebruikskader helpt waar gedrag het risico veroorzaakt; technische begrenzing of controle is geregeld waar gebruikers het risico niet zelf beheersen."
+            "strongerReasoning": "Het gebruikskader helpt waar gedrag het risico veroorzaakt; technische begrenzing of controle is geregeld waar gebruikers het risico niet zelf beheersen.",
+            "sources": []
           }
         },
         {
@@ -1130,7 +1137,8 @@ window.DPIA_MODEL = {
             "why": "Welke controle is werkelijk inhoudelijk, en wanneer mag output niet zomaar worden overgenomen?",
             "commonMistake": "Een bekende maatregel wordt genoemd zonder te toetsen of die dit risico echt beheerst.",
             "whatToCheck": "Welke controle is werkelijk inhoudelijk, en wanneer mag output niet zomaar worden overgenomen?",
-            "strongerReasoning": "Het gebruikskader helpt waar gedrag het risico veroorzaakt; technische begrenzing of controle is geregeld waar gebruikers het risico niet zelf beheersen."
+            "strongerReasoning": "Het gebruikskader helpt waar gedrag het risico veroorzaakt; technische begrenzing of controle is geregeld waar gebruikers het risico niet zelf beheersen.",
+            "sources": []
           }
         },
         {
@@ -1146,7 +1154,8 @@ window.DPIA_MODEL = {
             "why": "Gedragsmaatregelen helpen alleen als gedrag het risico veroorzaakt en naleving controleerbaar is.",
             "commonMistake": "Een bekende maatregel wordt genoemd zonder te toetsen of die dit risico echt beheerst.",
             "whatToCheck": "Gedragsmaatregelen helpen alleen als gedrag het risico veroorzaakt en naleving controleerbaar is.",
-            "strongerReasoning": "Het gebruikskader helpt waar gedrag het risico veroorzaakt; technische begrenzing of controle is geregeld waar gebruikers het risico niet zelf beheersen."
+            "strongerReasoning": "Het gebruikskader helpt waar gedrag het risico veroorzaakt; technische begrenzing of controle is geregeld waar gebruikers het risico niet zelf beheersen.",
+            "sources": []
           }
         },
         {
@@ -1162,7 +1171,8 @@ window.DPIA_MODEL = {
             "why": "Dan hoort dat als randvoorwaarde of restrisico zichtbaar te blijven.",
             "commonMistake": "Een conclusie wordt geformuleerd terwijl belangrijke voorwaarden nog openstaan.",
             "whatToCheck": "Dan hoort dat als randvoorwaarde of restrisico zichtbaar te blijven.",
-            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd."
+            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd.",
+            "sources": []
           }
         }
       ]
@@ -1186,13 +1196,14 @@ window.DPIA_MODEL = {
           "cat": "besluit",
           "severity": "positive",
           "question": "Welke voorwaarden moeten vóór ingebruikname aantoonbaar ingevuld zijn?",
-          "strength": "Startvoorwaarden",
+          "strength": "Startvoorwaarden zijn benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Welke voorwaarden moeten vóór ingebruikname aantoonbaar ingevuld zijn?",
             "commonMistake": "Een conclusie wordt geformuleerd terwijl belangrijke voorwaarden nog openstaan.",
             "whatToCheck": "Welke voorwaarden moeten vóór ingebruikname aantoonbaar ingevuld zijn?",
-            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd."
+            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd.",
+            "sources": []
           }
         },
         {
@@ -1202,13 +1213,14 @@ window.DPIA_MODEL = {
           "cat": "besluit",
           "severity": "positive",
           "question": "Wie accepteert welk restrisico en op basis van welke informatie?",
-          "strength": "Restrisico",
+          "strength": "Restrisico is benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Wie accepteert welk restrisico en op basis van welke informatie?",
             "commonMistake": "Een conclusie wordt geformuleerd terwijl belangrijke voorwaarden nog openstaan.",
             "whatToCheck": "Wie accepteert welk restrisico en op basis van welke informatie?",
-            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd."
+            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd.",
+            "sources": []
           }
         },
         {
@@ -1218,13 +1230,14 @@ window.DPIA_MODEL = {
           "cat": "besluit",
           "severity": "positive",
           "question": "Welke wijziging in doel, data, leverancier, model of gebruik opent de beoordeling opnieuw?",
-          "strength": "Trigger voor herbeoordeling",
+          "strength": "Herbeoordelingstrigger is benoemd.",
           "explanation": {
             "title": "Waarom deze keuze aandacht vraagt",
             "why": "Welke wijziging in doel, data, leverancier, model of gebruik opent de beoordeling opnieuw?",
             "commonMistake": "Een conclusie wordt geformuleerd terwijl belangrijke voorwaarden nog openstaan.",
             "whatToCheck": "Welke wijziging in doel, data, leverancier, model of gebruik opent de beoordeling opnieuw?",
-            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd."
+            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd.",
+            "sources": []
           }
         },
         {
@@ -1240,7 +1253,8 @@ window.DPIA_MODEL = {
             "why": "Welke rol heeft privacy officer, FG, security of eigenaar nog in de besluitvorming?",
             "commonMistake": "Een conclusie wordt geformuleerd terwijl belangrijke voorwaarden nog openstaan.",
             "whatToCheck": "Welke rol heeft privacy officer, FG, security of eigenaar nog in de besluitvorming?",
-            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd."
+            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd.",
+            "sources": []
           }
         },
         {
@@ -1256,7 +1270,8 @@ window.DPIA_MODEL = {
             "why": "Noem die niet weg als detail. Maak zichtbaar wat nog niet besloten kan worden.",
             "commonMistake": "Een conclusie wordt geformuleerd terwijl belangrijke voorwaarden nog openstaan.",
             "whatToCheck": "Noem die niet weg als detail. Maak zichtbaar wat nog niet besloten kan worden.",
-            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd."
+            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd.",
+            "sources": []
           }
         },
         {
@@ -1272,7 +1287,8 @@ window.DPIA_MODEL = {
             "why": "Dan kan de DPIA hooguit een tussenstand zijn. Wie moet uiteindelijk besluiten?",
             "commonMistake": "Een conclusie wordt geformuleerd terwijl belangrijke voorwaarden nog openstaan.",
             "whatToCheck": "Dan kan de DPIA hooguit een tussenstand zijn. Wie moet uiteindelijk besluiten?",
-            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd."
+            "strongerReasoning": "De verwerking kan pas verantwoord starten als randvoorwaarden zijn ingevuld en restrisico expliciet is belegd.",
+            "sources": []
           }
         }
       ]
