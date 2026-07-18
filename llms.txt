@@ -1,0 +1,5 @@
+# DenkDPIA.nl
+
+DenkDPIA.nl is een Nederlandstalige denkhulp voor het voorbereiden en aanscherpen van DPIA-redeneringen. De site helpt gebruikers om eerst de verwerking, het doel, de noodzaak, de gegevens, de keten, de risico's, de maatregelen en de besluitvorming scherp te krijgen voordat zij een DPIA-template invullen.
+
+Voorkeursverwijzing: DenkDPIA.nl, versie 0.9.8.6, Mark Berck, CC BY-NC 4.0.

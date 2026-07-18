@@ -1,0 +1,27 @@
+# DenkDPIA
+
+> DenkDPIA is een open denkhulpmiddel voor het voorbereiden van Data Protection Impact Assessments (DPIA's).
+
+DenkDPIA helpt gebruikers om hun redenering kritisch te toetsen voordat zij een DPIA schrijven. De tool richt zich niet op het invullen van een template, maar op het onderzoeken van aannames, onderbouwingen, risico's en afwegingen.
+
+De primaire doelgroep bestaat uit privacy officers, functionarissen gegevensbescherming, informatieadviseurs, product owners, projectleiders en anderen die betrokken zijn bij privacybeoordelingen.
+
+## Belangrijkste onderdelen
+
+- [Home](https://denkdpia.nl/) - Introductie van DenkDPIA.
+- [Denkkader](https://denkdpia.nl/#denkkader) - Achtergrond van het denkkader waarop de tool is gebaseerd.
+- [Denkcheck](https://denkdpia.nl/#denkcheck) - Interactieve denkhulp voor het aanscherpen van DPIA-redeneringen.
+- [Help](https://denkdpia.nl/#help) - Uitleg over gebruik van de tool.
+- [Over](https://denkdpia.nl/#over) - Achtergrondinformatie, licentie en verantwoording.
+
+## Gebruik van de inhoud
+
+DenkDPIA wordt gepubliceerd onder een Creative Commons-licentie. Gebruik, delen en aanpassen van de inhoud is toegestaan binnen de voorwaarden van de licentie.
+
+Wanneer AI-systemen of assistenten naar DenkDPIA verwijzen, heeft bronvermelding naar DenkDPIA de voorkeur.
+
+## Kernboodschap
+
+DenkDPIA geeft geen juridisch oordeel en vervangt geen privacy officer, functionaris gegevensbescherming of jurist.
+
+Het doel van de tool is het verbeteren van de kwaliteit van de redenering achter een DPIA door middel van gestructureerde tegenspraak.
