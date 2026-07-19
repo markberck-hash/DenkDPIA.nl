@@ -12,6 +12,7 @@
 	--amber: #d99100;   /* nog uitwerken */
 	--red:   #a62828;   /* dragende schakels los */
 	--focus: #d99100;
+	--button-border-hover: var(--focus);
 	--shadow: 0 12px 22px rgba(36, 19, 49, .10);
 	--hero-overlay-opacity: .75;
 	--nav-offset: 8rem;
@@ -446,13 +447,71 @@ h2 {
 	color: var(--purple-dark)
 }
 
+button,
+.button,
+.btn,
+.btn-primary,
+.btn-secondary,
+.primary,
+.secondary,
+.ghost,
+.reset,
+.menu-toggle {
+	transition: background-color .2s ease, border-color .2s ease
+}
+
 .primary {
 	background: var(--purple);
 	color: white
 }
 
-.primary:hover {
-	background: var(--purple-dark)
+.button.primary:hover,
+.button.primary:focus {
+	background: color-mix(in srgb, var(--purple) 82%, var(--focus));
+	color: white
+}
+
+.button.secondary:hover,
+.button.secondary:focus,
+.button.ghost:hover,
+.button.ghost:focus {
+	background: color-mix(in srgb, var(--white) 90%, var(--focus));
+	color: var(--purple-dark)
+}
+
+.button.reset:hover,
+.button.reset:focus {
+	background: color-mix(in srgb, var(--white) 90%, var(--focus));
+	color: var(--red)
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus {
+	background: color-mix(in srgb, var(--white) 90%, var(--focus));
+	color: var(--purple-dark)
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus,
+.btn:hover,
+.btn:focus,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-secondary:hover,
+.btn-secondary:focus,
+.primary:hover,
+.primary:focus,
+.secondary:hover,
+.secondary:focus,
+.ghost:hover,
+.ghost:focus,
+.reset:hover,
+.reset:focus,
+.menu-toggle:hover,
+.menu-toggle:focus {
+	border-color: var(--focus)
 }
 
 .secondary,
