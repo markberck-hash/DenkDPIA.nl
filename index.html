@@ -30,23 +30,23 @@
    <body>
       <a class="skip-link" href="#inhoud">Direct naar inhoud</a>
       <header class="site-header">
-         <a class="brand" href="#start" data-route="start">
+         <a class="brand" href="/" data-route="start">
             <span>DenkDPIA.nl</span>
          </a>
          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
          <nav class="topnav" id="primary-nav" aria-label="Hoofdnavigatie">
-            <a href="#start" data-route="start">Start</a>
-            <a href="#denkkader" data-route="denkkader">Denkkader</a>
-            <a href="#denkcheck" data-route="denkcheck">Denkcheck</a>
-            <a href="#over" data-route="over">Over</a>
-            <a href="#help" data-route="help">Help</a>
+            <a href="/" data-route="start">Start</a>
+            <a href="/denkkader" data-route="denkkader">Denkkader</a>
+            <a href="/denkcheck" data-route="denkcheck">Denkcheck</a>
+            <a href="/over" data-route="over">Over</a>
+            <a href="/help" data-route="help">Help</a>
          </nav>
       </header>
       <main id="inhoud" tabindex="-1">
 
          <!-- Startpagina -->
          <section id="start" class="page active" aria-labelledby="start-title">
-            <div class="hero hero-overlay" role="img" aria-label="Abstracte visualisatie van complexe losse elementen die overgaan in een geordende structuur met paarse en zilveren vormen.">
+            <div class="hero hero-overlay">
                <div class="hero-copy">
                   <p class="kicker" id="start-kicker">DenkDPIA.nl</p>
                   <h1 id="start-title">Eerst de redenering.<br>Daarna pas het template.</h1>
@@ -58,7 +58,7 @@
                      <button class="button primary hero-button" type="button" data-start-check>
                         Start de denkcheck
                      </button>
-                     <a class="button secondary" href="#help" data-route="help">
+                     <a class="button secondary" href="/help" data-route="help">
                         Hoe werkt dit?
                      </a>
                   </div>
@@ -111,11 +111,21 @@
                         <p>De denkcheck is gebaseerd op een praktisch denkkader voor DPIA's. Het beschrijft welke vragen centraal staan voordat je begint met schrijven.</p>
                      </div>
                      <div class="onboarding-basis-action">
-                        <a class="button primary hero-button" href="#denkkader" data-route="denkkader">Bekijk het Denkkader →</a>
+                        <a class="button primary hero-button" href="/denkkader" data-route="denkkader">Bekijk het Denkkader →</a>
                      </div>
                   </div>
                </article>
             </section>
+         </section>
+
+         <section id="niet-gevonden" class="page" aria-labelledby="niet-gevonden-title">
+            <p class="kicker">Niet gevonden</p>
+            <h1 id="niet-gevonden-title">Pagina niet gevonden</h1>
+            <p class="lead narrow">De pagina die je probeert te openen bestaat niet of is verplaatst.</p>
+            <div class="actions">
+               <a class="button primary" href="/" data-route="start">Naar start</a>
+               <a class="button secondary" href="/denkcheck" data-route="denkcheck">Start de denkcheck</a>
+            </div>
          </section>
 
 

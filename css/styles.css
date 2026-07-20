@@ -160,6 +160,10 @@ textarea:focus,
 	padding: 2.25rem 2.5rem 2.4rem;
 	background-color: white;
 	background-image: url("../images/hero-illustratie.png");
+	background-image: image-set(
+		url("../images/hero-illustratie.webp") type("image/webp"),
+		url("../images/hero-illustratie.png") type("image/png")
+	);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 132% auto;

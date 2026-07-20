@@ -30,6 +30,45 @@ const model = window.DPIA_MODEL,
     steps = model.steps,
     categories = model.categories;
 
+const routes = {
+    start: {
+        id: 'start',
+        path: '/'
+    },
+    denkkader: {
+        id: 'denkkader',
+        path: '/denkkader'
+    },
+    denkcheck: {
+        id: 'denkcheck',
+        path: '/denkcheck'
+    },
+    over: {
+        id: 'over',
+        path: '/over'
+    },
+    help: {
+        id: 'help',
+        path: '/help'
+    },
+    resultaat: {
+        id: 'resultaat',
+        path: '/resultaat'
+    },
+    uitleg: {
+        id: 'uitleg',
+        path: '/uitleg'
+    },
+    notFound: {
+        id: 'niet-gevonden',
+        path: '/niet-gevonden'
+    }
+};
+
+function routeToPath(route) {
+    return routes[route]?.path || routes.notFound.path
+}
+
 function qs(s, r = document) {
     return r.querySelector(s)
 }
@@ -49,7 +88,7 @@ function escapeHtml(str) {
 }
 let firstRouteLoad = true;
 function setRoute(route) {
-    const targetRoute = document.getElementById(route) ? route : 'start';
+    const targetRoute = document.getElementById(route) ? route : 'niet-gevonden';
     qsa('.page').forEach(p => p.classList.toggle('active', p.id === targetRoute));
     qsa('.topnav a').forEach(a => a.classList.toggle('active', a.dataset.route === targetRoute));
     const page = document.getElementById(targetRoute);
@@ -69,11 +108,24 @@ return;
     })
 }
 
+function navigate(route, replace = false) {
+    const targetRoute = document.getElementById(route) ? route : 'niet-gevonden';
+    if (location.protocol === 'file:') {
+        location.hash = targetRoute === 'start' ? '' : targetRoute;
+        setRoute(targetRoute)
+        return
+    }
+
+    const path = routeToPath(targetRoute);
+    if (replace) history.replaceState(null, '', path);
+    else history.pushState(null, '', path);
+    setRoute(targetRoute)
+}
+
 function wireRoutes(root = document) {
     qsa('[data-route]', root).forEach(a => a.addEventListener('click', e => {
         e.preventDefault();
-        location.hash = a.dataset.route;
-        setRoute(a.dataset.route)
+        navigate(a.dataset.route)
     }))
 }
 
@@ -123,7 +175,7 @@ function renderUitleg(active, optId) {
         const e = found.opt.explanation;
         item = `<section class="result-panel uitleg-current"><p class="kicker">Uitleg bij jouw keuze</p><h2>${escapeHtml(e.title)}</h2><p>${escapeHtml(e.why||found.opt.feedback)}</p><h2>Veelvoorkomende denkfout</h2><p>${escapeHtml(e.commonMistake||c.mistake)}</p><h2>Wat onderzoek je nu?</h2><p>${escapeHtml(e.whatToCheck||found.opt.question)}</p><h2>Sterkere redenering</h2><p>${escapeHtml(e.strongerReasoning||c.strong)}</p></section>`
     }
-    const catBlock = `<section class="result-panel"><p class="kicker">Breder kader</p><h2>${escapeHtml(c.title)}</h2><p>${escapeHtml(c.look)}</p><h2>Algemene denkfout</h2><p>${escapeHtml(c.mistake)}</p><div class="example-pair"><p><strong>Zwakke redenering:</strong> ${escapeHtml(c.weak)}</p><p><strong>Sterkere redenering:</strong> ${escapeHtml(c.strong)}</p></div><p><a href="#denkcheck" data-route="denkcheck">Terug naar de denkcheck</a></p></section>`;
+    const catBlock = `<section class="result-panel"><p class="kicker">Breder kader</p><h2>${escapeHtml(c.title)}</h2><p>${escapeHtml(c.look)}</p><h2>Algemene denkfout</h2><p>${escapeHtml(c.mistake)}</p><div class="example-pair"><p><strong>Zwakke redenering:</strong> ${escapeHtml(c.weak)}</p><p><strong>Sterkere redenering:</strong> ${escapeHtml(c.strong)}</p></div><p><a href="/denkcheck" data-route="denkcheck">Terug naar de denkcheck</a></p></section>`;
     qs('#uitleg-detail').innerHTML = item + catBlock;
     wireRoutes(qs('#uitleg-detail'))
 }
@@ -353,10 +405,10 @@ function renderResult() {
     }).join('');
     const unconsideredHtml = unconsideredItems(c);
     qs('#result-output').innerHTML = `<section class="result-panel result-header"><span class="result-section-label">Onderwerp analyse</span><h2 class="result-subject">${escapeHtml(subject)}</h2></section><section class="result-panel status-card result-status ${st}"><p class="result-status-line">${escapeHtml(statusHeadline)}</p><span class="status-label">Uitkomst</span><h2>${escapeHtml(copy[0])}</h2><p class="status-support">${escapeHtml(prioritySummary)}</p></section><section class="result-panel result-worklist"><h2>Vragen om eerst te beantwoorden</h2><ol class="priority-questions">${priorityQuestions}</ol></section><section class="result-panel result-advice"><h2>${escapeHtml(copy[1])}</h2><p>${escapeHtml(copy[2])}</p></section><section class="result-panel result-feedback"><h2>Geactiveerde tegenspraak</h2>${groupedFeedback(c.feedback)}</section>${unconsideredHtml}${c.strengths.length?`<section class="result-panel strength-list"><h2>Wat lijkt al sterk</h2><ul class="clean-list">${c.strengths.slice(0,8).map(s=>`<li>${escapeHtml(s)}</li>`).join('')}</ul></section>`:''}<details><summary>Toon mijn keuzes en uitgangspunten</summary><ol>${c.byStep.map(x=>`<li><strong>${escapeHtml(x.step.title)}</strong><br>${x.opts.length?x.opts.map(o=>escapeHtml(o.label)).join('<br>'):'Geen keuze'}${AppState.notes[x.step.id]?`<br><em>Notitie: ${escapeHtml(AppState.notes[x.step.id])}</em>`:''}</li>`).join('')}</ol></details><div class="wizard-actions"><button class="button primary" type="button" id="print-report-btn">Print/Opslaan als PDF</button><button class="button reset" type="button" id="restart-btn">Opnieuw starten</button><button class="button secondary" type="button" id="back-check">Terug naar check</button></div>`;
-    setRoute('resultaat');
+    navigate('resultaat', true);
     qs('#print-report-btn').onclick = printDenkverslag;
     qs('#restart-btn').onclick = confirmRestart;
-    qs('#back-check').onclick = () => setRoute('denkcheck');
+    qs('#back-check').onclick = () => navigate('denkcheck');
     qsa('[data-help-cat]').forEach(a => a.addEventListener('click', e => {
         e.preventDefault();
         showUitleg(a.dataset.helpCat, a.dataset.helpOption)
@@ -441,24 +493,51 @@ function printDenkverslag() {
 function restart() {
     AppState.reset();
     renderStep();
-    setRoute('denkcheck');
-    location.hash = 'denkcheck'
+    navigate('denkcheck', true)
 }
 
 function confirmRestart() {
     if (confirm('Weet je zeker dat je opnieuw wilt beginnen? Je huidige keuzes en notities worden gewist.')) restart()
 }
 
-function routeFromHash() {
-    const hash = location.hash.replace('#', '') || 'start';
-    if (hash.startsWith('uitleg-')) {
-        const rest = hash.replace('uitleg-', '');
+function currentRoute() {
+    if (location.protocol === 'file:') {
+        const hash = (location.hash || '').replace('#', '').trim();
+        return hash || 'start'
+    }
+
+    const hash = (location.hash || '').replace('#', '').trim();
+    const validHashRoutes = new Set(['start', 'denkcheck', 'help', 'over', 'denkkader', 'resultaat']);
+    if (hash) {
+        if (hash.startsWith('uitleg-')) return hash;
+        return validHashRoutes.has(hash) ? hash : 'niet-gevonden'
+    }
+
+    const path = (location.pathname || '/').replace(/\/+$/, '') || '/';
+    const routeByPath = {
+        '/': 'start',
+        '/index.html': 'start',
+        '/denkcheck': 'denkcheck',
+        '/help': 'help',
+        '/over': 'over',
+        '/denkkader': 'denkkader',
+        '/resultaat': 'resultaat',
+        '/niet-gevonden': 'niet-gevonden'
+    };
+
+    return routeByPath[path] || 'niet-gevonden'
+}
+
+function routeFromLocation() {
+    const route = currentRoute();
+    if (route.startsWith('uitleg-')) {
+        const rest = route.replace('uitleg-', '');
         const firstDash = rest.indexOf('-');
         if (firstDash > 0) showUitleg(rest.slice(0, firstDash), rest.slice(firstDash + 1));
         else showUitleg(rest);
         return
     }
-    setRoute(hash)
+    setRoute(route)
 }
 
 function setupMobileMenu() {
@@ -482,10 +561,10 @@ function init() {
     renderStep();
     wireRoutes();
     qsa('[data-start-check]').forEach(b => b.addEventListener('click', () => {
-        location.hash = 'denkcheck';
-        setRoute('denkcheck')
+        navigate('denkcheck')
     }));
-    window.addEventListener('hashchange', routeFromHash);
+    window.addEventListener('hashchange', routeFromLocation);
+    window.addEventListener('popstate', routeFromLocation);
     qs('#wizard-form').addEventListener('submit', e => {
         e.preventDefault();
         if (AppState.stepIndex === 0 && !requireSubject()) return;
@@ -508,6 +587,6 @@ function init() {
         }
     };
     qs('#reset-btn').onclick = confirmRestart;
-    routeFromHash()
+    routeFromLocation()
 }
 document.addEventListener('DOMContentLoaded', init);
