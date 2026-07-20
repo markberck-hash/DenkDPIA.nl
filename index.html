@@ -4,10 +4,10 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>DenkDPIA.nl - Eerst de redenering. Daarna pas het template.</title>
-      <link rel="icon" href="favicon.ico" sizes="any">
-      <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-      <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
-      <link rel="apple-touch-icon" href="apple-touch-icon.png">
+      <link rel="icon" href="images/favicon.ico" sizes="any">
+      <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+      <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
       <meta name="description" content="DenkDPIA helpt je niet een DPIA in te vullen, maar de redenering erachter aan te scherpen. De toolkit maakt aannames, ontbrekende onderbouwingen en open vragen zichtbaar voordat je gaat schrijven. DenkDPIA bepaalt niet of een verwerking rechtmatig is, of een DPIA verplicht is, of je conclusies juist zijn. Het helpt je beter nadenken, niet de antwoorden geven.">
       <meta name="author" content="Mark Berck">
       <meta name="robots" content="index,follow">
@@ -19,9 +19,13 @@
       <meta property="og:image" content="https://denkdpia.nl/logo-denkdpia.png">
       <meta name="twitter:card" content="summary_large_image">
       <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DenkDPIA","url":"https://denkdpia.nl/","description":"Denkhulp voor het aanscherpen van DPIA-redeneringen."}</script>
-      <link rel="stylesheet" href="styles.css">
-      <script defer src="data.js"></script>
-      <script defer src="app.js"></script>
+      <link rel="stylesheet" href="css/styles.css">
+      <script defer src="js/data/categories.js"></script>
+      <script defer src="js/data/steps-01-04.js"></script>
+      <script defer src="js/data/steps-05-08.js"></script>
+      <script defer src="js/data/steps-09-12.js"></script>
+      <script defer src="js/data/model.js"></script>
+      <script defer src="js/app.js"></script>
    </head>
    <body>
       <a class="skip-link" href="#inhoud">Direct naar inhoud</a>
@@ -66,16 +70,16 @@
                   <h2 id="gebruik-title">Gebruik DenkDPIA als je...</h2>
                   <div class="use-case-list">
                      <section class="use-case-item" aria-labelledby="usecase-voorbereidt">
-                        <h3 id="usecase-voorbereidt">Een DPIA voorbereidt</h3>
-                        <p>Maak aannames, risico's en keuzes expliciet voordat je begint met schrijven.</p>
+                        <h3 id="usecase-voorbereidt">Een redenering scherp wilt krijgen voordat je gaat schrijven</h3>
+                        <p>Veel DPIA's beginnen met invullen. Daardoor verdwijnen aannames, onzekerheden en open vragen vaak achter nette formuleringen. DenkDPIA helpt die eerst zichtbaar maken.</p>
                      </section>
                      <section class="use-case-item" aria-labelledby="usecase-toetst">
-                        <h3 id="usecase-toetst">Een concept wilt toetsen</h3>
-                        <p>Maak zichtbaar waar argumenten ontbreken of onvoldoende zijn onderbouwd.</p>
+                        <h3 id="usecase-toetst">Wilt weten waarop je conclusie eigenlijk rust</h3>
+                        <p>Een redenering voelt vaak logisch totdat iemand kritisch doorvraagt. DenkDPIA maakt zichtbaar welke aannames, argumenten en keuzes jouw conclusie dragen.</p>
                      </section>
                      <section class="use-case-item" aria-labelledby="usecase-onderzoekt">
-                        <h3 id="usecase-onderzoekt">Een nieuwe verwerking onderzoekt</h3>
-                        <p>Breng doel, noodzaak, risico's en maatregelen in kaart voordat keuzes worden gemaakt.</p>
+                        <h3 id="usecase-onderzoekt">Een verwerking nog niet volledig begrijpt</h3>
+                        <p>Doel, noodzaak, risico's en maatregelen lijken soms duidelijk, terwijl belangrijke vragen nog openstaan. DenkDPIA helpt die vragen naar boven halen voordat er besluiten worden genomen.</p>
                      </section>
                   </div>
                </article>
@@ -84,16 +88,16 @@
                   <h2 id="werkt-title">Waarom dit werkt</h2>
                   <div class="use-case-list">
                      <section class="use-case-item" aria-labelledby="werkt-template">
-                        <h3 id="werkt-template">DPIA's beginnen vaak met een template</h3>
-                        <p>De aandacht gaat dan snel naar invullen, terwijl de onderbouwing nog niet scherp is.</p>
+                        <h3 id="werkt-template">Schrijven voelt vaak als vooruitgang</h3>
+                        <p>Zodra er een template ligt, verschuift de aandacht gemakkelijk van denken naar formuleren. Het document groeit, terwijl de redenering nog niet altijd meegroeit.</p>
                      </section>
                      <section class="use-case-item" aria-labelledby="werkt-aannames">
-                        <h3 id="werkt-aannames">Aannames worden vaak laat zichtbaar</h3>
-                        <p>Risico's, keuzes en ontbrekende argumenten komen meestal pas naar voren wanneer er al een concepttekst ligt.</p>
+                        <h3 id="werkt-aannames">Zwakke schakels worden vaak pas laat zichtbaar</h3>
+                        <p>Veel discussies ontstaan pas wanneer een privacy officer, FG of collega kritisch doorvraagt. Dan blijken aannames, open punten of ontbrekende onderbouwingen ineens belangrijk.</p>
                      </section>
                      <section class="use-case-item" aria-labelledby="werkt-omdraait">
-                        <h3 id="werkt-omdraait">DenkDPIA draait dat om</h3>
-                        <p>De denkcheck haalt deze vragen naar voren voordat je gaat schrijven.</p>
+                        <h3 id="werkt-omdraait">DenkDPIA organiseert die tegenspraak eerder</h3>
+                        <p>De denkcheck probeert niet antwoorden te geven. De denkcheck probeert zichtbaar te maken welke vragen een kritische lezer waarschijnlijk ook zou stellen, voordat die vragen verdwijnen in een DPIA-document.</p>
                      </section>
                   </div>
                </article>
@@ -204,7 +208,7 @@
                      </article>
                      <article class="topic-card">
                         <h2>Wat de uitkomst betekent</h2>
-                        <p>De resultaatpagina geeft geen rapportcijfer en geen juridisch oordeel. De drie vragen bovenaan zijn georganiseerde tegenspraak. Als die vragen scherp voelen, doet de denkhulp wat zij moet doen: niet antwoorden geven, maar zichtbaar maken welke onderdelen van de redenering nog bewijs, afbakening of besluitvorming nodig hebben.</p>
+                        <p>De resultaatpagina geeft geen rapportcijfer en geen juridisch oordeel. De vragen bovenaan zijn georganiseerde tegenspraak. Als die vragen scherp voelen, doet de denkhulp wat zij moet doen: niet antwoorden geven, maar zichtbaar maken welke onderdelen van de redenering nog bewijs, afbakening of besluitvorming nodig hebben.</p>
                      </article>
                   </div>
                </section>

@@ -1,275 +1,225 @@
-# DenkDPIA Architectuur
+# Architectuur DenkDPIA
 
-## Kernprincipe
+Dit document beschrijft de technische scheiding tussen informatieve content en de dynamische denkmachine van DenkDPIA.
 
-DenkDPIA bestaat uit twee afzonderlijke domeinen:
+## 1. Kernprincipe
 
-```
-┌─────────────────────────────────────┐
-│      INFORMATIE-SITE                │
-│  (Start, Help, Over, Denkkader)     │
-│  = Puur content redaction           │
-│  = Nooit app.js aanraken            │
-└─────────────────────────────────────┘
+DenkDPIA bestaat uit twee domeinen:
 
-┌─────────────────────────────────────┐
-│      DENKMACHINE                    │
-│  (Denkcheck, Uitleg, Resultaten)    │
-│  = Applicatielogica                 │
-│  = Blijft altijd dynamisch          │
-└─────────────────────────────────────┘
+```text
+INFORMATIE-SITE
+Start, Help, Over, Denkkader
+= statische HTML
+= redacteur-veilig
+= app.js niet nodig voor inhoud
 ```
 
-## COMPONENTEN
+```text
+DENKMACHINE
+Denkcheck, Uitleg, Resultaten, PDF-output
+= applicatielogica
+= dynamisch
+= gebaseerd op gebruikerskeuzes en data.js
+```
 
-### Informatie-site (100% HTML)
+Deze scheiding is belangrijk omdat DenkDPIA zowel redactionele content als functionele denklogica bevat. Die twee mogen niet onnodig door elkaar lopen.
 
-Deze pagina's bestaan volledig uit statische HTML. JavaScript raakt deze pagina's **niet** aan, behalve voor navigatie (hash-based routing).
+## 2. Informatie-site
 
-| Pagina | Bestand | Status | Redacteur-veilig |
-|--------|---------|--------|------------------|
-| Start | `index.html` lines 32-87 | ✅ HTML | Ja, volledig veilig |
-| Help | `index.html` lines 190-202 | ✅ HTML | Ja, volledig veilig |
-| Over | `index.html` lines 213-220 | ✅ HTML | Ja, volledig veilig |
-| Denkkader | `index.html` lines 145-188 | ✅ HTML | Ja, volledig veilig |
+De informatiepagina's staan zoveel mogelijk als statische HTML in `index.html`.
 
-**Waarom statisch:**
-- Minimale wijzigingsdruk → maximale stabiliteit
-- Redacteur kan teksten aanpassen zonder code-kennis
-- Geen afhankelijkheden in app.js
+Dit geldt voor:
 
----
+- Start;
+- Help;
+- Over;
+- Denkkader.
 
-### Denkmachine (dynamisch via app.js)
+JavaScript raakt deze pagina's alleen voor navigatie en routering.
 
-Deze pagina's en elementen worden gegenereerd via JavaScript. Zij bevatten toestandsafhankelijke logica en gebruikersinvoer.
+### Waarom statisch?
 
-| Component | Element ID | Bestand | Functie |
-|-----------|-----------|---------|---------|
-| Denkcheck wizard | `#step-container` | app.js | Actieve vraag renderen |
-| Wizard input form | `#wizard-form` | app.js | Antwoorden verwerken |
-| Resultaten | `#result-output` | app.js | Analyse-output renderen |
-| Uitleg detail | `#uitleg-detail` | app.js | Geselecteerde uitleg renderen |
+- Redactionele wijzigingen zijn veiliger.
+- Teksten kunnen worden aangepast zonder applicatielogica te wijzigen.
+- De kans op regressie in de denkcheck wordt kleiner.
+- De scheiding tussen content en logica blijft zichtbaar.
 
----
+## 3. Denkmachine
 
-## FUNCTIONELE API
+De denkmachine bestaat uit de onderdelen die afhankelijk zijn van gebruikerskeuzes, toestand of modeldata.
 
-Dit zijn de HTML-elementen waar app.js afhankelijk van is. Deze hebben een **expliciete functie** en mogen niet zomaar verwijderd worden.
+Belangrijke onderdelen:
+
+| Component | Element | Bestand | Functie |
+| --- | --- | --- | --- |
+| Denkcheck wizard | `#step-container` | `app.js` | actieve vraag renderen |
+| Wizard formulier | `#wizard-form` | `app.js` | antwoorden en notities verwerken |
+| Resultaten | `#result-output` | `app.js` | analyse-output renderen |
+| Uitleg detail | `#uitleg-detail` | `app.js` | uitleg bij keuze renderen |
+| PDF-output | `#print-output` | `app.js` en `styles.css` | denkverslag genereren en printen |
+
+## 4. Data-architectuur
+
+`data.js` bevat het model van de denkmachine.
+
+Het model bevat:
+
+- categorieën;
+- stappen;
+- opties;
+- feedback;
+- vragen;
+- severity;
+- strengths;
+- uitlegvelden.
+
+`data.js` bevat geen statische sitecontent voor Start, Help, Over of Denkkader.
+
+## 5. Belangrijke functionele elementen
+
+De volgende elementen zijn onderdeel van de functionele API tussen HTML en JavaScript.
 
 ### `#step-container`
 
-**Functie:** Renderen van de actieve denkcheck-vraag (stap in de wizard)
+Rendert de actieve denkcheck-vraag.
 
-**Reden:** De denkcheck-router vult hier dynamisch elke stap in.
+Niet doen:
 
-**Aanpassingen:**
-- ✅ CSS classe aanpassen
-- ✅ Wrapper-divs toevoegen
-- ❌ Element verwijderen
-- ❌ ID veranderen
-
-**Eigenaar:** Applicatielogica (app.js)
-
----
+- ID wijzigen;
+- element verwijderen;
+- functie verplaatsen zonder app.js aan te passen.
 
 ### `#wizard-form`
 
-**Functie:** Formulier voor het verwerken van antwoorden in de denkcheck
+Verwerkt antwoorden en werknotities.
 
-**Reden:** Event-listener voor `submit` event; staat gekoppeld aan AppState.
+Niet doen:
 
-**Aanpassingen:**
-- ✅ CSS aanpassen
-- ✅ Input-velden toevoegen
-- ❌ Form-tag verwijderen
-- ❌ ID veranderen
-
-**Eigenaar:** Applicatielogica (app.js)
-
----
+- form-tag verwijderen;
+- ID wijzigen;
+- submit-flow omzeilen.
 
 ### `#result-output`
 
-**Functie:** Renderen van de eindresultaten na denkcheck (werkvoorraad)
+Rendert de resultaatpagina.
 
-**Reden:** Dynamische HTML gegenereerd uit AppState.answers + categorieën
+Niet doen:
 
-**Aanpassingen:**
-- ✅ CSS styling aanpassen
-- ✅ Wrapper-elementen toevoegen
-- ❌ Container verwijderen
-- ❌ ID veranderen
-
-**Eigenaar:** Applicatielogica (app.js)
-
----
+- container verwijderen;
+- ID wijzigen.
 
 ### `#uitleg-detail`
 
----
+Rendert dynamische uitleg bij gekozen tegenspraak.
 
-**Functie:** Renderen van gedetailleerde uitleg voor geselecteerde categorie
+Niet doen:
 
-**Reden:** Dynamisch gegenereerd via `renderUitleg()` afhankelijk van categorie-ID
+- ID wijzigen;
+- element verwijderen.
 
-**Aanpassingen:**
-- ✅ CSS aanpassen
-- ✅ Nesting aanpassen
-- ❌ Element verwijderen
-- ❌ ID veranderen
+### `#print-output`
 
-**Eigenaar:** Applicatielogica (app.js)
+Wordt dynamisch aangemaakt voor de PDF/printweergave.
 
----
+Niet doen:
 
-## CONTENT vs APPLICATIE
+- PDF als losse webdump vormgeven;
+- print-CSS laten botsen met documentstijl;
+- webcomponenten kopiëren zonder documentfunctie.
 
-Onderaan elke pagina in HTML staat een HTML-comment dat aangeeft of het element **content** (redacteur kan wijzigen) of **functioneel** (nooit aanraken) is.
+## 6. Resultaatpagina en PDF
 
-### Start pagina (voorbeeld)
+De resultaatpagina en PDF gebruiken dezelfde analysebasis, maar hebben een andere vorm.
 
-```html
-<!-- CONTENT: redacteur kan aanpassen -->
-<p class="kicker" id="start-kicker">DenkDPIA.nl</p>
-<h1 id="start-title">Eerst de redenering. Daarna pas het template.</h1>
-<p class="lead" id="start-lead">Voor projectleiders...</p>
+De resultaatpagina is een reflectie-interface.
 
-<!-- CONTENT: redacteur kan aanpassen -->
-<div id="start-intro">
-  <p>DenkDPIA beoordeelt geen document...</p>
-</div>
+De PDF is een blijvend denkproduct.
 
-<!-- CONTENT: redacteur kan aanpassen -->
-<p id="side-text">Een scherpere werkvoorraad...</p>
-<p id="side-rule">Geen DPIA-checker, maar georganiseerde tegenspraak.</p>
-```
+Beide moeten dezelfde inhoudelijke spanning bewaren:
 
-**Regel:** Geen JavaScript aanpakken voor deze elementen. App.js kent deze IDs niet meer.
+- gemaakte keuzes;
+- geactiveerde tegenspraak;
+- niet-verkende bouwstenen;
+- sterke signalen;
+- eventuele werknotities.
 
----
+De PDF hoeft visueel niet op de resultaatpagina te lijken. De PDF moet als document lezen.
 
-## DATA ARCHITECTURE
+## 7. Onderhoud per rol
 
-### `data.js` na refactoring
+### Redacteur
 
-`data.js` bevat nu ALLEEN:
+Mag aanpassen zonder `app.js` te openen:
 
-```javascript
-window.DPIA_MODEL = {
-  version: "0.9.8",
-  categories: { ... },    // ← Nog nodig voor uitleg/detail en categoriecontext
-  steps: [ ... ]          // ← Nog nodig voor denkcheck wizard
-}
-```
+- statische tekst op Start, Help, Over en Denkkader;
+- links;
+- alinea's;
+- toon en formulering van informatiepagina's;
+- tekst binnen de ontwerpdocumenten.
 
-De statische content voor Start, Help, Over en Denkkader staat nu in `index.html` en niet meer in de datastructuur.
+Niet aanpassen:
 
----
+- functionele element-ID's;
+- `data-route` attributen;
+- `#step-container`;
+- `#wizard-form`;
+- `#result-output`;
+- `#uitleg-detail`;
+- JavaScript.
 
-## ONDERHOUD PER ROL
+### Developer
 
-### Redacteur (inhoudelijk)
+Werkt in `app.js` wanneer het gaat om:
 
-Je mag aanpassen **zonder** app.js te openen:
+- state management;
+- wizard-flow;
+- dynamische rendering;
+- resultaatlogica;
+- PDF-generatie;
+- routing;
+- event listeners.
 
-- ✅ Titel/tekst op Start, Help, Over, Denkkader
-- ✅ Links toevoegen/verwijderen (op Over pagina)
-- ✅ Paragrafen herstructureren
-- ✅ Koppelingen in Denkkader aanpassen
-- ✅ Toon van "Waarom deze tool bestaat" veranderen
+Werkt in `data.js` wanneer het gaat om:
 
-Je mag **niet** aanraken:
-- ❌ Element-IDs
-- ❌ `data-route` attributen
-- ❌ `#step-container`, `#wizard-form`, `#result-output`, `#uitleg-detail`
-- ❌ JavaScript bestanden
+- denkcheck-stappen;
+- opties;
+- feedback;
+- categorieën;
+- severity;
+- uitlegvelden.
 
----
+Werkt in `styles.css` wanneer het gaat om:
 
-### Developer (logica)
+- visuele stijl;
+- responsive gedrag;
+- printstijl;
+- documentstijl van PDF.
 
-Je werkt in app.js wanneer je:
+## 8. Documentenset als ontwerpcontract
 
-- ✅ Denkcheck-stappen toevoegt/wijzigt
-- ✅ Categorieën uitbreidt
-- ✅ Uitleg-logica aanpast
-- ✅ AppState/wizard flow wijzigt
+Naast de code hoort bij DenkDPIA een documentenset:
 
-Je raakt HTML **niet** aan voor:
-- ❌ Start, Help, Over, Denkkader content
-- ❌ Statische titels/lead-teksten
-- ❌ Informatieve pagina's
+- `denkkader.md` beschrijft welk probleem de tool oplost;
+- `principes.md` beschrijft de ontwerpprincipes;
+- `anti-principes.md` beschrijft wat de tool bewust niet doet;
+- `persona.md` beschrijft de primaire gebruiker;
+- `UX.md` beschrijft UX- en designtaalprincipes;
+- `architectuur.md` beschrijft de technische scheiding.
 
----
+Deze documenten vormen samen een ontwerpcontract. Nieuwe functionaliteit moet niet alleen technisch werken, maar ook passen binnen dit contract.
 
-## RICHTLIJNEN
+## 9. Checklist voor toekomstige wijzigingen
 
-### Wanneer iets in HTML mag
+Voor elke wijziging:
 
-- ✅ Statische content (tekst, afbeeldingen, links)
-- ✅ Semantische structuur
-- ✅ Informatie-pagina's
-- ✅ CSS classes toevoegen
-- ✅ Aria-labels voor accessibility
+- Past de wijziging bij het denkkader?
+- Neemt de tool geen verantwoordelijkheid over van de gebruiker?
+- Blijft de tool volledig clientside?
+- Wordt de PDF nog steeds een denkproduct en geen eindrapport?
+- Worden statische content en applicatielogica gescheiden gehouden?
+- Wordt iets zichtbaar gemaakt zonder het als oordeel te presenteren?
+- Is de wijziging nodig voor scherper denken, of vooral voor gemak?
 
-### Wanneer iets in app.js hoort
+## 10. Laatst bijgewerkt
 
-- ✅ State management (AppState)
-- ✅ Event listeners
-- ✅ Dynamische rendering
-- ✅ Logica en algoritmes
-- ✅ Routing & pagina-switches
-
-### Wanneer iets in data.js hoort
-
-- ✅ Denkcheck-stappen (`steps[]`)
-- ✅ Categorie-definities (`categories{}`)
-- ✅ Dynamische content die varies per sessie
-
----
-
-## MIGRATIE VOLTOOID
-
-| Taak | Status | Voordeel |
-|------|--------|----------|
-| ✅ Start pagina → HTML | KLAAR | renderStart() verwijderd |
-| ✅ Help pagina → HTML | KLAAR | Volledig statisch |
-| ✅ Over pagina → HTML | KLAAR | renderOver() verwijderd |
-| ✅ Denkkader → HTML | KLAAR | Was al HTML |
-| ✅ Architectuur document | KLAAR | Dit bestand |
-
-**Netto resultaat:**
-- 📉 3 render-functies verwijderd
-- 📉 30+ regels JS bespaard
-- 📈 Duidelijke Content/API scheiding
-- 📈 Redacteur-veilige HTML
-- 📈 Onderhoudsvriendelijk
-
----
-
-## CHECKLIST VOOR TOEKOMSTIGE WIJZIGINGEN
-
-**Voor inhoudelijke wijzigingen op Start/Help/Over/Denkkader:**
-- [ ] Wijzig HTML direct
-- [ ] Controleer dat je geen element-IDs aanraakt
-- [ ] Test in browser
-- [ ] Commit naar versiecontrole
-- [ ] **Open app.js NIET**
-
-**Voor functionaliteit-uitbreidingen:**
-- [ ] Voeg stap toe aan `data.js` (steps array)
-- [ ] Of voeg categorie toe (categories object)
-- [ ] Zorg dat renderUitleg/renderStep het aankunnen
-- [ ] Test met wizard flow
-- [ ] **Raak HTML informatie-pagina's NIET aan**
-
-**Voor bug-fixes in content:**
-- [ ] Zoek in HTML, niet in app.js
-- [ ] Zelfde bericht staat ook ergens in data.js? → Update beide!
-- [ ] (Dit vermindert naarmate minder content in data.js zit)
-
----
-
-*Laatst bijgewerkt: 2026-07-18*
-*Versie: 0.9.8*
+Deze architectuurnotitie is aangescherpt naar aanleiding van de feedbackrondes over DenkDPIA en de vastgelegde ontwerpdocumenten.
