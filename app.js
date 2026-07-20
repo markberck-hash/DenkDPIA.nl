@@ -1,4 +1,4 @@
-const AppState = {
+﻿const AppState = {
     data: {
         stepIndex: 0,
         answers: {},
@@ -222,22 +222,51 @@ function collect() {
         for (const o of opts) {
             if (o.strength) strengths.push(o.strength);
             if (o.severity !== 'positive') {
+                const question = o.question || o.feedback;
                 feedback.push({
                     cat: o.cat,
                     text: o.feedback,
                     severity: o.severity,
-                    optionId: o.id
+                    optionId: o.id,
+                    stepId: st.id,
+                    stepNumber: st.number,
+                    stepTitle: st.title,
+                    optionLabel: o.label,
+                    question
                 });
-                signals.push(o.question || o.feedback)
+                signals.push({
+                    question,
+                    cat: o.cat,
+                    optionId: o.id,
+                    stepId: st.id,
+                    stepNumber: st.number,
+                    stepTitle: st.title,
+                    optionLabel: o.label
+                })
             }
         }
         if (st.type === 'multi' && typeof st.minimumForGreen === 'number' && ids.length < st.minimumForGreen) {
+            const question = st.lowSelectionQuestion || st.lowSelectionFeedback || 'Er is nog onvoldoende concreet gekozen.';
             feedback.push({
                 cat: st.lowSelectionCat || 'besluit',
                 text: st.lowSelectionFeedback || 'Er is nog onvoldoende concreet gekozen.',
-                severity: st.lowSelectionSeverity || 'warning'
+                severity: st.lowSelectionSeverity || 'warning',
+                optionId: '',
+                stepId: st.id,
+                stepNumber: st.number,
+                stepTitle: st.title,
+                optionLabel: 'Onvoldoende concrete keuzes',
+                question
             });
-            signals.push(st.lowSelectionQuestion || st.lowSelectionFeedback)
+            signals.push({
+                question,
+                cat: st.lowSelectionCat || 'besluit',
+                optionId: '',
+                stepId: st.id,
+                stepNumber: st.number,
+                stepTitle: st.title,
+                optionLabel: 'Onvoldoende concrete keuzes'
+            })
         }
     }
     return {
@@ -247,7 +276,6 @@ function collect() {
         byStep
     }
 }
-
 function status(c) {
     if (c.feedback.some(f => f.severity === 'blocker')) return 'red';
     if (c.feedback.filter(f => f.severity === 'warning').length >= 4) return 'orange';
@@ -267,9 +295,46 @@ function groupedFeedback(items) {
         groups[f.cat] = groups[f.cat] || [];
         groups[f.cat].push(f)
     });
-    return `<div class="grouped-feedback">` + Object.entries(groups).map(([cat, arr]) => `<details open><summary>${escapeHtml(categories[cat]?.title||cat)}</summary><ul class="clean-list">${arr.map(f=>`<li>${escapeHtml(f.text)} <a class="deep-link" href="#uitleg-${cat}${f.optionId?'-'+f.optionId:''}" data-help-cat="${cat}" ${f.optionId?`data-help-option="${f.optionId}"`:''}>Meer uitleg</a></li>`).join('')}</ul></details>`).join('') + `</div>`
+    return `<div class="grouped-feedback">` + Object.entries(groups).map(([cat, arr]) => `<details open><summary>${escapeHtml(categories[cat]?.title||cat)}</summary><ul class="clean-list">${arr.map(f=>{
+        const stepContext = (f.stepNumber || f.stepTitle) ? `<div class="feedback-step">Stap ${escapeHtml(f.stepNumber||'?')} · ${escapeHtml(f.stepTitle||'')}</div>` : '';
+        const choiceContext = f.optionLabel ? `<div class="choice-context"><span class="choice-label">Jouw keuze</span><span class="choice-value">${escapeHtml(f.optionLabel)}</span></div>` : '';
+        return `<li>${stepContext}${choiceContext}<span class="feedback-text">${escapeHtml(f.text)}</span> <a class="deep-link" href="#uitleg-${cat}${f.optionId?'-'+f.optionId:''}" data-help-cat="${cat}" ${f.optionId?`data-help-option="${f.optionId}"`:''}>Meer uitleg</a></li>`
+    }).join('')}</ul></details>`).join('') + `</div>`
 }
 
+function unconsideredItems(c) {
+    const inventoryStepIds = ['schets', 'keten', 'maatregelen', 'besluit'];
+    const skipOptionIds = new Set(['geen', 'onduidelijk', 'onbekend', 'onvoldoende', 'open']);
+    const blocks = [];
+    for (const stepId of inventoryStepIds) {
+        const stepEntry = c.byStep.find(x => x.step.id === stepId);
+        const step = stepEntry?.step || steps.find(s => s.id === stepId);
+        if (!step) continue;
+        const selectedIds = new Set((stepEntry?.opts || []).map(o => o.id));
+        const unselected = (step.options || []).filter(option => !selectedIds.has(option.id) && !skipOptionIds.has(option.id));
+        if (!unselected.length) continue;
+        blocks.push(`<section class="unconsidered-step"><h3>Stap ${escapeHtml(step.number)} · ${escapeHtml(step.title)}</h3><ul class="clean-list">${unselected.map(option=>`<li>${escapeHtml(option.label)}</li>`).join('')}</ul></section>`)
+    }
+    if (!blocks.length) return '';
+    return `<section class="result-panel result-unconsidered"><h2>Je hebt nog niet nagedacht over</h2><p>Deze onderwerpen zijn in deze analyse niet geselecteerd. Dat is geen oordeel, maar wel nuttige context wanneer je de DPIA verder uitwerkt.</p><div class="unconsidered-list">${blocks.join('')}</div></section>`
+}
+
+function printUnconsidered(c) {
+    const inventoryStepIds = ['schets', 'keten', 'maatregelen', 'besluit'];
+    const skipOptionIds = new Set(['geen', 'onduidelijk', 'onbekend', 'onvoldoende', 'open']);
+    const blocks = [];
+    for (const stepId of inventoryStepIds) {
+        const stepEntry = c.byStep.find(x => x.step.id === stepId);
+        const step = stepEntry?.step || steps.find(s => s.id === stepId);
+        if (!step) continue;
+        const selectedIds = new Set((stepEntry?.opts || []).map(o => o.id));
+        const unselected = (step.options || []).filter(option => !selectedIds.has(option.id) && !skipOptionIds.has(option.id));
+        if (!unselected.length) continue;
+        blocks.push(`<section class="print-unconsidered-step"><h3>Stap ${escapeHtml(step.number)} · ${escapeHtml(step.title)}</h3><ul>${unselected.map(option=>`<li>${escapeHtml(option.label)}</li>`).join('')}</ul></section>`)
+    }
+    if (!blocks.length) return '';
+    return `<section class="print-block print-unconsidered"><h2>Je hebt nog niet nagedacht over</h2><p>Deze onderwerpen zijn in deze analyse niet geselecteerd. Dat is geen oordeel, maar wel nuttige context wanneer je de DPIA verder uitwerkt.</p>${blocks.join('')}</section>`
+}
 function renderResult() {
     const c = collect(),
         st = status(c),
@@ -281,8 +346,13 @@ function renderResult() {
     const defaultQuestions = ['Welke aanname kan een kritische lezer betwisten?', 'Welke eerdere stap moet eerst kloppen?', 'Wat moet waar zijn voordat deze keuze draagt?'];
     const baseQuestions = questions.length ? questions : defaultQuestions;
     const worklistQuestions = (st === 'green' && c.feedback.length === 0) ? ['Welke aanname in deze analyse zou een kritische FG waarschijnlijk als eerste willen toetsen?', ...baseQuestions] : baseQuestions;
-    const priorityQuestions = worklistQuestions.map((q, i) => `<li class="priority-question"><span class="priority-number">${i + 1}</span><span class="priority-text">${escapeHtml(q)}</span></li>`).join('');
-    qs('#result-output').innerHTML = `<section class="result-panel result-header"><span class="result-section-label">Onderwerp analyse</span><h2 class="result-subject">${escapeHtml(subject)}</h2></section><section class="result-panel status-card result-status ${st}"><p class="result-status-line">${escapeHtml(statusHeadline)}</p><span class="status-label">Uitkomst</span><h2>${escapeHtml(copy[0])}</h2><p class="status-support">${escapeHtml(prioritySummary)}</p></section><section class="result-panel result-worklist"><h2>Vragen om eerst te beantwoorden</h2><ol class="priority-questions">${priorityQuestions}</ol></section><section class="result-panel result-advice"><h2>${escapeHtml(copy[1])}</h2><p>${escapeHtml(copy[2])}</p></section><section class="result-panel result-feedback"><h2>Geactiveerde tegenspraak</h2>${groupedFeedback(c.feedback)}</section>${c.strengths.length?`<section class="result-panel strength-list"><h2>Wat lijkt al sterk</h2><ul class="clean-list">${c.strengths.slice(0,8).map(s=>`<li>${escapeHtml(s)}</li>`).join('')}</ul></section>`:''}<details><summary>Toon mijn keuzes en uitgangspunten</summary><ol>${c.byStep.map(x=>`<li><strong>${escapeHtml(x.step.title)}</strong><br>${x.opts.length?x.opts.map(o=>escapeHtml(o.label)).join('<br>'):'Geen keuze'}${AppState.notes[x.step.id]?`<br><em>Notitie: ${escapeHtml(AppState.notes[x.step.id])}</em>`:''}</li>`).join('')}</ol></details><div class="wizard-actions"><button class="button primary" type="button" id="print-report-btn">Print/Opslaan als PDF</button><button class="button reset" type="button" id="restart-btn">Opnieuw starten</button><button class="button secondary" type="button" id="back-check">Terug naar check</button></div>`;
+    const priorityQuestions = worklistQuestions.map((q, i) => {
+        const questionText = typeof q === 'string' ? q : q.question;
+        const context = typeof q === 'string' ? '' : `<span class="priority-context">Stap ${escapeHtml(q.stepNumber||'?')} · ${escapeHtml(q.stepTitle||'')}</span><div class="choice-context"><span class="choice-label">Jouw keuze</span><span class="choice-value">${escapeHtml(q.optionLabel||'')}</span></div>`;
+        return `<li class="priority-question"><span class="priority-number">${i + 1}</span><span class="priority-body">${context}<span class="priority-text">${escapeHtml(questionText)}</span></span></li>`
+    }).join('');
+    const unconsideredHtml = unconsideredItems(c);
+    qs('#result-output').innerHTML = `<section class="result-panel result-header"><span class="result-section-label">Onderwerp analyse</span><h2 class="result-subject">${escapeHtml(subject)}</h2></section><section class="result-panel status-card result-status ${st}"><p class="result-status-line">${escapeHtml(statusHeadline)}</p><span class="status-label">Uitkomst</span><h2>${escapeHtml(copy[0])}</h2><p class="status-support">${escapeHtml(prioritySummary)}</p></section><section class="result-panel result-worklist"><h2>Vragen om eerst te beantwoorden</h2><ol class="priority-questions">${priorityQuestions}</ol></section><section class="result-panel result-advice"><h2>${escapeHtml(copy[1])}</h2><p>${escapeHtml(copy[2])}</p></section><section class="result-panel result-feedback"><h2>Geactiveerde tegenspraak</h2>${groupedFeedback(c.feedback)}</section>${unconsideredHtml}${c.strengths.length?`<section class="result-panel strength-list"><h2>Wat lijkt al sterk</h2><ul class="clean-list">${c.strengths.slice(0,8).map(s=>`<li>${escapeHtml(s)}</li>`).join('')}</ul></section>`:''}<details><summary>Toon mijn keuzes en uitgangspunten</summary><ol>${c.byStep.map(x=>`<li><strong>${escapeHtml(x.step.title)}</strong><br>${x.opts.length?x.opts.map(o=>escapeHtml(o.label)).join('<br>'):'Geen keuze'}${AppState.notes[x.step.id]?`<br><em>Notitie: ${escapeHtml(AppState.notes[x.step.id])}</em>`:''}</li>`).join('')}</ol></details><div class="wizard-actions"><button class="button primary" type="button" id="print-report-btn">Print/Opslaan als PDF</button><button class="button reset" type="button" id="restart-btn">Opnieuw starten</button><button class="button secondary" type="button" id="back-check">Terug naar check</button></div>`;
     setRoute('resultaat');
     qs('#print-report-btn').onclick = printDenkverslag;
     qs('#restart-btn').onclick = confirmRestart;
@@ -292,7 +362,6 @@ function renderResult() {
         showUitleg(a.dataset.helpCat, a.dataset.helpOption)
     }))
 }
-
 function ensurePrintOutput() {
     let el = qs('#print-output');
     if (!el) {
@@ -323,14 +392,15 @@ function printFeedback(c) {
             const opt = optionDetail(cat, f.optionId);
             const e = opt?.explanation;
             if (e?.strongerReasoning && !directions.includes(e.strongerReasoning)) directions.push(e.strongerReasoning);
-            const q = e?.whatToCheck && e.whatToCheck !== f.text ? `<p><strong>Te onderzoeken:</strong> ${escapeHtml(e.whatToCheck)}</p>` : '';
-            return `<article class="print-item"><p><strong>Aandachtspunt:</strong> ${escapeHtml(f.text)}</p>${q}</article>`
+            const stepHeading = (f.stepNumber || f.stepTitle) ? `<h4>Stap ${escapeHtml(f.stepNumber || '?')} · ${escapeHtml(f.stepTitle || '')}</h4>` : '';
+            const choice = f.optionLabel ? `<p class="print-choice"><strong>Jouw keuze:</strong><br>${escapeHtml(f.optionLabel)}</p>` : '';
+            const q = e?.whatToCheck && e.whatToCheck !== f.text ? `<p><strong>Te onderzoeken:</strong><br>${escapeHtml(e.whatToCheck)}</p>` : '';
+            return `<article class="print-item">${stepHeading}${choice}<p><strong>Aandachtspunt:</strong><br>${escapeHtml(f.text)}</p>${q}</article>`
         }).join('');
         const directionBlock = directions.length ? `<p><strong>Richting voor verdere uitwerking:</strong> ${directions.map(d=>escapeHtml(d)).join(' ')}</p>` : '';
         return `<section class="print-block"><h3>${escapeHtml(categories[cat]?.title||cat)}</h3>${body}${directionBlock}</section>`
     }).join('')
 }
-
 function printNotes(c) {
     const notes = c.byStep.filter(x => AppState.notes[x.step.id]);
     if (!notes.length) return '';
@@ -349,9 +419,18 @@ function renderDenkverslag() {
         date = new Date().toLocaleDateString('nl-NL'),
         subject = analysisSubject() || 'Niet ingevuld';
     const notesHtml = printNotes(c);
-    return `<div class="print-title"><p class="kicker">DenkDPIA.nl</p><h1>Vooranalyse ten behoeve van een DPIA</h1><p><strong>Onderwerp:</strong> ${escapeHtml(subject)}</p><p><strong>Datum:</strong> ${escapeHtml(date)}<br><strong>Gegenereerd met:</strong> DenkDPIA.nl v${escapeHtml(model.version||'')}</p></div><section class="print-block"><h2>Status van dit document</h2><p>Dit document ondersteunt de voorbereiding van een DPIA. Het bevat aandachtspunten, open vragen en mogelijke zwakke plekken in de onderbouwing van een verwerking van persoonsgegevens.</p><p>De inhoud is gebaseerd op antwoorden die tijdens deze analyse zijn gegeven. Het document is bedoeld als hulpmiddel voor verdere uitwerking, discussie en toetsing.</p><p>Dit document is geen DPIA, geen juridisch advies en geen formele beoordeling door een privacy officer, Functionaris Gegevensbescherming of jurist.</p><p>Deze vooranalyse is volledig clientside gegenereerd. Antwoorden en eventuele werknotities zijn niet naar een server verzonden en niet door DenkDPIA opgeslagen.</p></section><section class="print-block"><h2>Hoe lees je dit document?</h2><p>De samenvatting geeft de belangrijkste uitkomst van de analyse. De vervolgvragen tonen welke punten nader onderzoek vragen. De tegenspraak per categorie laat zien waar een kritische lezer waarschijnlijk op doorvraagt. De appendix bevat de gemaakte keuzes als context bij deze vooranalyse.</p></section><section class="print-block"><h2>Samenvatting</h2><p><strong>${escapeHtml(copy[0])}</strong></p><p>${escapeHtml(copy[2])}</p></section><section class="print-block"><h2>Belangrijkste vragen voor vervolgonderzoek</h2>${questions.length?`<ol>${questions.map(q=>`<li>${escapeHtml(q)}</li>`).join('')}</ol>`:'<p>Er zijn geen specifieke hoofdvragen gevonden. Blijf wel toetsen welke aannames een kritische lezer kan betwisten.</p>'}</section><section class="print-block"><h2>Geactiveerde tegenspraak per categorie</h2>${printFeedback(c)}</section>${c.strengths.length?`<section class="print-block"><h2>Wat lijkt al sterk</h2><ul>${c.strengths.slice(0,8).map(s=>`<li>${escapeHtml(s)}</li>`).join('')}</ul></section>`:''}${notesHtml?`<section class="print-block"><h2>Werknotities</h2>${notesHtml}</section>`:''}<section class="print-block appendix"><h2>Appendix: gemaakte keuzes</h2>${printChoices(c)}</section><footer class="print-footer"><p>DenkDPIA.nl geeft geen juridisch advies en vervangt geen beoordeling door privacy officer, Functionaris Gegevensbescherming of jurist.</p></footer>`
+    const unconsideredPrintHtml = printUnconsidered(c);
+    const printQuestionsHtml = questions.length ? questions.map(q=>{
+        if (typeof q === 'string') {
+            return `<p>${escapeHtml(q)}</p>`
+        }
+        const questionText = q.question;
+        const stepHeading = `Stap ${escapeHtml(q.stepNumber||'?')} · ${escapeHtml(q.stepTitle||'')}`;
+        const choice = escapeHtml(q.optionLabel||'');
+        return `<article class="print-question-item"><h3>${stepHeading}</h3><p class="print-choice"><strong>Jouw keuze:</strong><br>${choice}</p><p><strong>Denkvraag:</strong><br>${escapeHtml(questionText)}</p></article>`
+    }).join('') : '<p>Er zijn geen specifieke hoofdvragen gevonden. Blijf wel toetsen welke aannames een kritische lezer kan betwisten.</p>';
+    return `<div class="print-title"><p class="kicker">DenkDPIA.nl</p><h1>Vooranalyse ten behoeve van een DPIA</h1><p><strong>Onderwerp:</strong> ${escapeHtml(subject)}</p><p><strong>Datum:</strong> ${escapeHtml(date)}<br><strong>Gegenereerd met:</strong> DenkDPIA.nl v${escapeHtml(model.version||'')}</p></div><section class="print-block"><h2>Status van dit document</h2><p>Dit document ondersteunt de voorbereiding van een DPIA. Het bevat aandachtspunten, open vragen en mogelijke zwakke plekken in de onderbouwing van een verwerking van persoonsgegevens.</p><p>De inhoud is gebaseerd op antwoorden die tijdens deze analyse zijn gegeven. Het document is bedoeld als hulpmiddel voor verdere uitwerking, discussie en toetsing.</p><p>Dit document is geen DPIA, geen juridisch advies en geen formele beoordeling door een privacy officer, Functionaris Gegevensbescherming of jurist.</p><p>Deze vooranalyse is volledig clientside gegenereerd. Antwoorden en eventuele werknotities zijn niet naar een server verzonden en niet door DenkDPIA opgeslagen.</p></section><section class="print-block"><h2>Hoe lees je dit document?</h2><p>De samenvatting geeft de belangrijkste uitkomst van de analyse. De vervolgvragen tonen welke punten nader onderzoek vragen. De tegenspraak per categorie laat zien waar een kritische lezer waarschijnlijk op doorvraagt. De appendix bevat de gemaakte keuzes als context bij deze vooranalyse.</p></section><section class="print-block"><h2>Samenvatting</h2><p><strong>${escapeHtml(copy[0])}</strong></p><p>${escapeHtml(copy[2])}</p></section><section class="print-block"><h2>Belangrijkste vragen voor vervolgonderzoek</h2>${printQuestionsHtml}</section><section class="print-block"><h2>Geactiveerde tegenspraak per categorie</h2>${printFeedback(c)}</section>${unconsideredPrintHtml}${c.strengths.length?`<section class="print-block"><h2>Wat lijkt al sterk</h2><ul>${c.strengths.slice(0,8).map(s=>`<li>${escapeHtml(s)}</li>`).join('')}</ul></section>`:''}<section class="print-block"><h2>Gemaakte keuzes per stap (appendix)</h2>${printChoices(c)}</section>${notesHtml?`<section class="print-block"><h2>Werknotities (appendix)</h2>${notesHtml}</section>`:''}<section class="print-footer"><p><strong>Gebruik van dit document</strong><br>Gebruik dit verslag als tussenproduct om redeneringen aan te scherpen vóórdat je een formele DPIA opstelt.</p></section>`
 }
-
 function printDenkverslag() {
     save();
     const el = ensurePrintOutput();

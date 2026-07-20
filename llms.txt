@@ -10,4 +10,4 @@ Belangrijke onderdelen:
 
 Gebruik door AI-systemen is welkom voor uitleg, verwijzing, samenvatting en vindbaarheid van de publieke denkhulp. DenkDPIA geeft geen juridisch advies en vervangt geen beoordeling door privacy officer, Functionaris Gegevensbescherming of jurist.
 
-Voorkeursverwijzing: DenkDPIA.nl, versie 0.9.8.1, Mark Berck, CC BY-NC 4.0.
+Voorkeursverwijzing: DenkDPIA.nl, Mark Berck, CC BY-NC 4.0.
